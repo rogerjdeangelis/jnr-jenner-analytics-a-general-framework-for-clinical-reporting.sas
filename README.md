@@ -10,11 +10,11 @@ Jenner Analytics general framework for clinical reporting
     https://github.com/rogerjdeangelis/jnr-jenner-analytics-a-general-framework-for-clinical-reporting.sas
 
     PROBLEM:
-    Reproduce  the R Intent to Treat Table
+    Reproduce  the R Intent-to-Treat Table
     https://tinyurl.com/bdzhvkkp
 
-    Jenner Table in PDF Format (Note PDF tables should not be editable? - download for higher reolution?)
-      https://tinyurl.com/yeyvubuf
+    Jenner Table in PDF Format (Note PDF tables should not be editable? - download for higher resolution?)
+      [Jenner Table in PDF Format] https://tinyurl.com/yeyvubuf
     Jenner Table in Word Format (Note PDF tables should not be editable?)
       https://tinyurl.com/5fam2m2m
     Jenner Table Printer Format
@@ -22,9 +22,9 @@ Jenner Analytics general framework for clinical reporting
 
     Some minor report formatting issues actively being worked on.
 
-    A very flexible Jenner format driven solution
+    A very flexible Jenner format-driven solution
 
-    A three page clinical mock table is mapped irectly into a Jenner format.
+    A three-page clinical mock table is mapped irectly into a Jenner format.
     This format and associated cntlout configuarition table drive almost all the processing
 
     NOTE:  Page identifies the page and order gives the placement on the page.
