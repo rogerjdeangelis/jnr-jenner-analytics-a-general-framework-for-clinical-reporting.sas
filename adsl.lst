@@ -1,0 +1,1561 @@
+LIST:   16NOV2026:14:33:54
+
+PROC CONTENTS
+-------------------------------------------------------------------------------
+
+Data Set Name: d:/adam\adsl.parquet
+Observations:  254
+Variables:     48
+
+Variables (in alphabetical order):
+
+  #  Variable  Type    Len  Format  Label
+---  --------  ----  -----  ------  -----
+ 16  AGE        Num      8          
+ 17  AGEGR1    Char      8          
+ 18  AGEGR1N    Num      8          
+ 19  AGEU      Char      8          
+  6  ARM       Char     20          
+ 14  AVGDD      Num      8          
+ 33  BMIBL      Num      8          
+ 34  BMIBLGR1  Char      8          
+ 28  COMP16FL  Char      8          
+ 29  COMP24FL  Char      8          
+ 27  COMP8FL   Char      8          
+ 15  CUMDOSE    Num      8          
+ 46  DCDECOD   Char     27          
+ 47  DCREASCD  Char     18          
+ 30  DISCONFL  Char      8          
+ 38  DISONSDT   Num      8  DATE9.  
+ 31  DSRAEFL   Char      8          
+ 32  DTHFL     Char      8          
+ 39  DURDIS     Num      8          
+ 40  DURDSGR1  Char      8          
+ 37  EDUCLVL    Num      8          
+ 26  EFFFL     Char      8          
+ 23  ETHNIC    Char     22          
+ 35  HEIGHTBL   Num      8          
+ 25  ITTFL     Char      8          
+ 48  MMSETOT    Num      8          
+ 20  RACE      Char     32          
+ 21  RACEN      Num      8          
+ 45  RFENDT     Num      8  DATE9.  
+ 43  RFENDTC   Char     10          
+ 42  RFSTDTC   Char     10          
+ 24  SAFFL     Char      8          
+ 22  SEX       Char      8          
+  5  SITEGR1   Char      8          
+  4  SITEID    Char      8          
+  1  STUDYID   Char     12          
+  3  SUBJID    Char      8          
+  9  TRT01A    Char     20          
+ 10  TRT01AN    Num      8          
+  7  TRT01P    Char     20          
+  8  TRT01PN    Num      8          
+ 13  TRTDUR     Num      8          
+ 12  TRTEDT     Num      8  DATE9.  
+ 11  TRTSDT     Num      8  DATE9.  
+  2  USUBJID   Char     11          
+ 41  VISIT1DT   Num      8  DATE9.  
+ 44  VISNUMEN   Num      8          
+ 36  WEIGHTBL   Num      8          
+
+-------------------------------------------------------------------------------
+
+
+      Obs TRT     USUBJID     AGE AGEGR1N RACEN BMIBL HEIGHTBL WEIGHTBL EDUCLVL DURDIS MMSETOT DURDISCD BMICD SEXN
+
+        1 Placebo 01-701-1015  63    1      1    25.1   147.3    54.4      16     43.9    23       2      2     2
+        2 Placebo 01-701-1023  64    1      1    30.4   162.6    80.3      14     76.4    23       2      3     1
+        3 XH      01-701-1028  71    2      1    31.4   177.8    99.3      16     42.8    23       2      3     1
+        4 XL      01-701-1033  74    2      1    28.8   175.3    88.5      12     55.3    23       2      2     1
+        5 XH      01-701-1034  77    2      1    26.1   154.9    62.6       9     32.9    21       2      2     2
+        6 Placebo 01-701-1047  85    3      1    30.4   148.6    67.1       8     42.0    23       2      3     2
+        7 XL      01-701-1097  68    2      1    27.3   168.9    78.0      18     99.1    10       2      2     1
+        8 XL      01-701-1111  81    3      1    23.9   158.2    59.9      22     40.7    23       2      1     2
+        9 XL      01-701-1115  84    3      1    23.9   181.6    78.9      12    101.9    20       2      1     1
+       10 Placebo 01-701-1118  52    1      1    21.9   180.3    71.2      14     44.2    20       2      1     1
+
+   Obs    FMTNAME     LABEL
+
+     1    AGE         AGE      @Page @01 @Order @110 @AGE (y)              @N               @N            @UNIVARIATE
+     2    AGE         AGE      @Page @01 @Order @120 @AGE (y)              @Mean(SD)        @Mean StdDev  @UNIVARIATE
+     3    AGE         AGE      @Page @01 @Order @130 @AGE (y)              @Median          @Median       @UNIVARIATE
+     4    AGE         AGE      @Page @01 @Order @140 @AGE (y)              @Min, Max        @Min Max      @UNIVARIATE
+     5    AGEGR1N     AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT
+     6    AGEGR1N     AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT
+     7    AGEGR1N     AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT
+     8    BMIBL       BMIBL    @Page @03 @Order @210 @Baseline BMI         @N               @N            @UNIVARIATE
+     9    BMIBL       BMIBL    @Page @03 @Order @220 @Baseline BMI         @Mean(SD)        @Mean StdDev  @UNIVARIATE
+    10    BMIBL       BMIBL    @Page @03 @Order @230 @Baseline BMI         @Median          @Median       @UNIVARIATE
+    11    BMIBL       BMIBL    @Page @03 @Order @240 @Baseline BMI         @Min, Max        @Min Max      @UNIVARIATE
+    12    BMICD       BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT
+    13    BMICD       BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT
+    14    BMICD       BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT
+    15    DURDIS      DURDIS   @Page @02 @Order @110 @Duration of disease  @N               @N            @UNIVARIATE
+    16    DURDIS      DURDIS   @Page @02 @Order @120 @Duration of disease  @Mean(SD)        @Mean StdDev  @UNIVARIATE
+    17    DURDIS      DURDIS   @Page @02 @Order @130 @Duration of disease  @Median          @Median       @UNIVARIATE
+    18    DURDIS      DURDIS   @Page @02 @Order @140 @Duration of disease  @Min, Max        @Min Max      @UNIVARIATE
+    19    DURDISCD    DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT
+    20    DURDISCD    DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT
+    21    EDUCLVL     EDUCLVL  @Page @02 @Order @210 @Years of Education   @N               @N            @UNIVARIATE
+    22    EDUCLVL     EDUCLVL  @Page @02 @Order @220 @Years of Education   @Mean(SD)        @Mean StdDev  @UNIVARIATE
+    23    EDUCLVL     EDUCLVL  @Page @02 @Order @230 @Years of Education   @Median          @Median       @UNIVARIATE
+    24    EDUCLVL     EDUCLVL  @Page @02 @Order @240 @Years of Education   @Min, Max        @Min Max      @UNIVARIATE
+    25    HEIGHTBL    HEIGHTBL @Page @03 @Order @110 @Baseline height(cm)  @N               @N            @UNIVARIATE
+    26    HEIGHTBL    HEIGHTBL @Page @03 @Order @120 @Baseline height(cm)  @Mean(SD)        @Mean StdDev  @UNIVARIATE
+    27    HEIGHTBL    HEIGHTBL @Page @03 @Order @130 @Baseline height(cm)  @Median          @Median       @UNIVARIATE
+    28    HEIGHTBL    HEIGHTBL @Page @03 @Order @140 @Baseline height(cm)  @Min, Max        @Min Max      @UNIVARIATE
+    29    MMSETOT     MMSETOT  @Page @01 @Order @510 @MMSE                 @N               @N            @UNIVARIATE
+    30    MMSETOT     MMSETOT  @Page @01 @Order @520 @MMSE                 @Mean(SD)        @Mean StdDev  @UNIVARIATE
+    31    MMSETOT     MMSETOT  @Page @01 @Order @530 @MMSE                 @Median          @Median       @UNIVARIATE
+    32    MMSETOT     MMSETOT  @Page @01 @Order @540 @MMSE                 @Min, Max        @Min Max      @UNIVARIATE
+    33    RACEN       RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT
+    34    RACEN       RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT
+    35    RACEN       RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT
+    36    RACEN       RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT
+    37    SEXN        SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT
+    38    SEXN        SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT
+    39    SEXN        SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT
+    40    WEIGHTBL    WEIGHTBL @Page @02 @Order @310 @Baseline weight(kg)  @N               @N            @UNIVARIATE
+    41    WEIGHTBL    WEIGHTBL @Page @02 @Order @320 @Baseline weight(kg)  @Mean(SD)        @Mean StdDev  @UNIVARIATE
+    42    WEIGHTBL    WEIGHTBL @Page @02 @Order @330 @Baseline weight(kg)  @Median          @Median       @UNIVARIATE
+    43    WEIGHTBL    WEIGHTBL @Page @02 @Order @340 @Baseline weight(kg)  @Min, Max        @Min Max      @UNIVARIATE
+
+ Obs    QUESTION                                                                                     TRT        ANSWER
+
+  1     SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT    Placebo       1
+  2     SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT    All           1
+  3     RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT    Placebo       1
+  4     RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT    All           1
+  5     AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT    Placebo       1
+
+ Obs    QUESTION                                                                                     TRT        ANSWER
+
+   1    AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT    Placebo       0
+   2    AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT    XL            0
+   3    AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT    XH            0
+   4    AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT    All           0
+   5    AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT    Placebo       0
+   6    AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT    XL            0
+   7    AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT    XH            0
+   8    AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT    All           0
+   9    AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT    Placebo       0
+  10    AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT    XL            0
+  11    AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT    XH            0
+  12    AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT    All           0
+  13    BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT    Placebo       0
+  14    BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT    XL            0
+  15    BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT    XH            0
+  16    BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT    All           0
+  17    BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT    Placebo       0
+  18    BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT    XL            0
+  19    BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT    XH            0
+  20    BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT    All           0
+  21    BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT    Placebo       0
+  22    BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT    XL            0
+  23    BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT    XH            0
+  24    BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT    All           0
+  25    DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT    Placebo       0
+  26    DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT    XL            0
+  27    DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT    XH            0
+  28    DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT    All           0
+  29    DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT    Placebo       0
+  30    DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT    XL            0
+  31    DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT    XH            0
+  32    DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT    All           0
+  33    RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT    Placebo       0
+  34    RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT    XL            0
+  35    RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT    XH            0
+  36    RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT    All           0
+  37    RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT    Placebo       0
+  38    RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT    XL            0
+  39    RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT    XH            0
+  40    RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT    All           0
+  41    RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT    Placebo       0
+  42    RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT    XL            0
+  43    RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT    XH            0
+  44    RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT    All           0
+  45    RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT    Placebo       0
+  46    RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT    XL            0
+  47    RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT    XH            0
+  48    RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT    All           0
+  49    SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT    Placebo       0
+  50    SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT    XL            0
+  51    SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT    XH            0
+  52    SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT    All           0
+  53    SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT    Placebo       0
+  54    SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT    XL            0
+  55    SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT    XH            0
+  56    SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT    All           0
+  57    SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT    Placebo       0
+  58    SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT    XL            0
+  59    SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT    XH            0
+  60    SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT    All           0
+                                                   The FREQ Procedure
+
+                                                                 Cumulative    Cumulative
+                            TRT        Frequency    Percent     Frequency      Percent
+                            ----------------------------------------------------------------
+                            All             1271     49.88         1271        49.88
+                            Placebo          433     16.99         1704        66.88
+                            XH               422     16.56         2126        83.44
+                            XL               422     16.56         2548       100.00
+
+Obs   TRT   GRP       QUESTION                                                                                    ANSWER
+
+  1   All   AGEGR1N   AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT      1
+  2   All   AGEGR1N   AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT      1
+  3   All   AGEGR1N   AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT      1
+  4   All   AGEGR1N   AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT      1
+  5   All   AGEGR1N   AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT      1
+  6   All   AGEGR1N   AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT      1
+  7   All   AGEGR1N   AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT      1
+  8   All   AGEGR1N   AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT      1
+  9   All   AGEGR1N   AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT      1
+ 10   All   AGEGR1N   AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT      1
+
+Obs    TRT        GRP         QUESTION
+
+  1    All        AGEGR1N     AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT
+  2    All        AGEGR1N     AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT
+  3    All        AGEGR1N     AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT
+  4    All        BMICD       BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT
+  5    All        BMICD       BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT
+  6    All        BMICD       BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT
+  7    All        DURDISCD    DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT
+  8    All        DURDISCD    DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT
+  9    All        RACEN       RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT
+ 10    All        RACEN       RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT
+ 11    All        RACEN       RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT
+ 12    All        RACEN       RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT
+ 13    All        SEXN        SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT
+ 14    All        SEXN        SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT
+ 15    All        SEXN        SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT
+ 16    Placebo    AGEGR1N     AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT
+ 17    Placebo    AGEGR1N     AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT
+ 18    Placebo    AGEGR1N     AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT
+ 19    Placebo    BMICD       BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT
+ 20    Placebo    BMICD       BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT
+ 21    Placebo    BMICD       BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT
+ 22    Placebo    DURDISCD    DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT
+ 23    Placebo    DURDISCD    DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT
+ 24    Placebo    RACEN       RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT
+ 25    Placebo    RACEN       RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT
+ 26    Placebo    RACEN       RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT
+ 27    Placebo    RACEN       RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT
+ 28    Placebo    SEXN        SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT
+ 29    Placebo    SEXN        SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT
+ 30    Placebo    SEXN        SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT
+ 31    XH         AGEGR1N     AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT
+ 32    XH         AGEGR1N     AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT
+ 33    XH         AGEGR1N     AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT
+ 34    XH         BMICD       BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT
+ 35    XH         BMICD       BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT
+ 36    XH         BMICD       BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT
+ 37    XH         DURDISCD    DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT
+ 38    XH         DURDISCD    DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT
+ 39    XH         RACEN       RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT
+ 40    XH         RACEN       RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT
+ 41    XH         RACEN       RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT
+ 42    XH         RACEN       RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT
+ 43    XH         SEXN        SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT
+ 44    XH         SEXN        SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT
+ 45    XH         SEXN        SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT
+ 46    XL         AGEGR1N     AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT
+ 47    XL         AGEGR1N     AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT
+ 48    XL         AGEGR1N     AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT
+ 49    XL         BMICD       BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT
+ 50    XL         BMICD       BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT
+ 51    XL         BMICD       BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT
+ 52    XL         DURDISCD    DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT
+ 53    XL         DURDISCD    DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT
+ 54    XL         RACEN       RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT
+ 55    XL         RACEN       RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT
+ 56    XL         RACEN       RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT
+ 57    XL         RACEN       RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT
+ 58    XL         SEXN        SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT
+ 59    XL         SEXN        SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT
+ 60    XL         SEXN        SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT
+
+Obs    SUMGRP    ANSWER
+
+  1      254     144(57%)
+  2      254     33(13%)
+  3      254     77(30%)
+  4      253     149(59%)
+  5      253     76(30%)
+  6      253     28(11%)
+  7      254     12(5%)
+  8      254     242(95%)
+  9      254     0(0%)
+ 10      254     230(91%)
+ 11      254     23(9%)
+ 12      254     1(0%)
+ 13      254     0(0%)
+ 14      254     111(44%)
+ 15      254     143(56%)
+ 16       86     42(49%)
+ 17       86     14(16%)
+ 18       86     30(35%)
+ 19       86     59(69%)
+ 20       86     21(24%)
+ 21       86     6(7%)
+ 22       86     5(6%)
+ 23       86     81(94%)
+ 24       86     0(0%)
+ 25       86     78(91%)
+ 26       86     8(9%)
+ 27       86     0(0%)
+ 28       86     0(0%)
+ 29       86     33(38%)
+ 30       86     53(62%)
+ 31       84     55(65%)
+ 32       84     11(13%)
+ 33       84     18(21%)
+ 34       84     44(52%)
+ 35       84     28(33%)
+ 36       84     12(14%)
+ 37       84     4(5%)
+ 38       84     80(95%)
+ 39       84     0(0%)
+ 40       84     74(88%)
+ 41       84     9(11%)
+ 42       84     1(1%)
+ 43       84     0(0%)
+ 44       84     44(52%)
+ 45       84     40(48%)
+ 46       84     47(56%)
+ 47       84     8(10%)
+ 48       84     29(35%)
+ 49       83     46(55%)
+ 50       83     27(33%)
+ 51       83     10(12%)
+ 52       84     3(4%)
+ 53       84     81(96%)
+ 54       84     0(0%)
+ 55       84     78(93%)
+ 56       84     6(7%)
+ 57       84     0(0%)
+ 58       84     0(0%)
+ 59       84     34(40%)
+ 60       84     50(60%)
+
+                                                                     ANSWER_   ANSWER_   ANSWER_   ANSWER_   ANSWER_
+    Obs   TRT       QUESTION   _TYPE_   _FREQ_    ANSWER_Mean         StdDev    Median     Min       Max        N
+
+      1   All       AGE           3       254    75.086614173   8.2462338962     77.00     51.0      89.0      254
+      2   All       BMIBL         3       254    24.672332016    4.092184927     24.20     13.7      40.1      253
+      3   All       DURDIS        3       254    43.939370079   28.397315626     36.25      2.2     183.1      254
+      4   All       EDUCLVL       3       254    12.751968504   3.3829227112     12.00      3.0      24.0      254
+      5   All       HEIGHTBL      3       254    163.93149606   10.760447269    162.85    135.9     195.6      254
+      6   All       MMSETOT       3       254    18.141732284   4.2103287441     19.00     10.0      24.0      254
+      7   All       WEIGHTBL      3       254    66.647826087   14.131425537     66.70     34.0     108.0      253
+      8   Placebo   AGE           3        86    75.209302326   8.5901671271     76.00     52.0      89.0       86
+      9   Placebo   BMIBL         3        86    23.636046512   3.6719256942     23.40     15.1      33.3       86
+     10   Placebo   DURDIS        3        86           42.65   30.241571505     35.30      7.2     183.1       86
+     11   Placebo   EDUCLVL       3        86    12.581395349   2.9484397321     12.00      6.0      21.0       86
+     12   Placebo   HEIGHTBL      3        86    162.57325581   11.522361118    162.60    137.2     185.4       86
+     13   Placebo   MMSETOT       3        86    18.046511628   4.2727783405     19.50     10.0      23.0       86
+     14   Placebo   WEIGHTBL      3        86    62.759302326   12.771543533     60.55     34.0      86.2       86
+     15   XH        AGE           3        84    74.380952381   7.8860938487     76.00     56.0      88.0       84
+     16   XH        BMIBL         3        84    25.347619048   4.1582687602     24.80     13.7      34.5       84
+     17   XH        DURDIS        3        84    40.507142857   24.693547207     35.95      2.2     135.0       84
+     18   XH        EDUCLVL       3        84    12.511904762   2.9185491016     12.00      6.0      20.0       84
+     19   XH        HEIGHTBL      3        84     165.8202381   10.131351552    165.10    146.1     190.5       84
+     20   XH        MMSETOT       3        84    18.511904762   4.1580059158     20.00     10.0      24.0       84
+     21   XH        WEIGHTBL      3        84    70.004761905   14.653433372     69.20     41.7     108.0       84
+     22   XL        AGE           3        84    75.666666667   8.2860505995     77.50     51.0      88.0       84
+     23   XL        BMIBL         3        84    25.062650602    4.270508933     24.30     17.7      40.1       83
+     24   XL        DURDIS        3        84    48.691666667   29.584171152     40.25      7.8     130.8       84
+     25   XL        EDUCLVL       3        84    13.166666667   4.1473851054     12.00      3.0      24.0       84
+     26   XL        HEIGHTBL      3        84    163.43333333   10.419240003    162.60    135.9     195.6       84
+     27   XL        MMSETOT       3        84    17.869047619   4.2220869673     18.00     10.0      24.0       84
+     28   XL        WEIGHTBL      3        84    67.279518072   14.123598649     64.90     45.4     106.1       83
+
+  Obs    QUESTION                                                                                           ANSWER
+
+    1    AGE      @Page @01 @Order @110 @AGE (y)              @N               @N            @UNIVARIATE      254
+    2    AGE      @Page @01 @Order @120 @AGE (y)              @Mean(SD)        @Mean StdDev  @UNIVARIATE    75(8.2)
+    3    AGE      @Page @01 @Order @130 @AGE (y)              @Median          @Median       @UNIVARIATE       77
+    4    AGE      @Page @01 @Order @140 @AGE (y)              @Min, Max        @Min Max      @UNIVARIATE    51, 89
+    5    BMIBL    @Page @03 @Order @210 @Baseline BMI         @N               @N            @UNIVARIATE      253
+    6    BMIBL    @Page @03 @Order @220 @Baseline BMI         @Mean(SD)        @Mean StdDev  @UNIVARIATE    25(4.1)
+    7    BMIBL    @Page @03 @Order @230 @Baseline BMI         @Median          @Median       @UNIVARIATE       24
+    8    BMIBL    @Page @03 @Order @240 @Baseline BMI         @Min, Max        @Min Max      @UNIVARIATE    14, 40
+    9    DURDIS   @Page @02 @Order @110 @Duration of disease  @N               @N            @UNIVARIATE      254
+   10    DURDIS   @Page @02 @Order @120 @Duration of disease  @Mean(SD)        @Mean StdDev  @UNIVARIATE    44(28.4)
+   11    DURDIS   @Page @02 @Order @130 @Duration of disease  @Median          @Median       @UNIVARIATE       36
+   12    DURDIS   @Page @02 @Order @140 @Duration of disease  @Min, Max        @Min Max      @UNIVARIATE    2, 183
+   13    EDUCLVL  @Page @02 @Order @210 @Years of Education   @N               @N            @UNIVARIATE      254
+   14    EDUCLVL  @Page @02 @Order @220 @Years of Education   @Mean(SD)        @Mean StdDev  @UNIVARIATE    13(3.4)
+   15    EDUCLVL  @Page @02 @Order @230 @Years of Education   @Median          @Median       @UNIVARIATE       12
+   16    EDUCLVL  @Page @02 @Order @240 @Years of Education   @Min, Max        @Min Max      @UNIVARIATE    3, 24
+   17    HEIGHTBL @Page @03 @Order @110 @Baseline height(cm)  @N               @N            @UNIVARIATE      254
+   18    HEIGHTBL @Page @03 @Order @120 @Baseline height(cm)  @Mean(SD)        @Mean StdDev  @UNIVARIATE    164(10.8)
+   19    HEIGHTBL @Page @03 @Order @130 @Baseline height(cm)  @Median          @Median       @UNIVARIATE      163
+   20    HEIGHTBL @Page @03 @Order @140 @Baseline height(cm)  @Min, Max        @Min Max      @UNIVARIATE    136, 196
+   21    MMSETOT  @Page @01 @Order @510 @MMSE                 @N               @N            @UNIVARIATE      254
+   22    MMSETOT  @Page @01 @Order @520 @MMSE                 @Mean(SD)        @Mean StdDev  @UNIVARIATE    18(4.2)
+   23    MMSETOT  @Page @01 @Order @530 @MMSE                 @Median          @Median       @UNIVARIATE       19
+   24    MMSETOT  @Page @01 @Order @540 @MMSE                 @Min, Max        @Min Max      @UNIVARIATE    10, 24
+   25    WEIGHTBL @Page @02 @Order @310 @Baseline weight(kg)  @N               @N            @UNIVARIATE      253
+   26    WEIGHTBL @Page @02 @Order @320 @Baseline weight(kg)  @Mean(SD)        @Mean StdDev  @UNIVARIATE    67(14.1)
+   27    WEIGHTBL @Page @02 @Order @330 @Baseline weight(kg)  @Median          @Median       @UNIVARIATE       67
+   28    WEIGHTBL @Page @02 @Order @340 @Baseline weight(kg)  @Min, Max        @Min Max      @UNIVARIATE    34, 108
+   29    AGE      @Page @01 @Order @110 @AGE (y)              @N               @N            @UNIVARIATE       86
+   30    AGE      @Page @01 @Order @120 @AGE (y)              @Mean(SD)        @Mean StdDev  @UNIVARIATE    75(8.6)
+   31    AGE      @Page @01 @Order @130 @AGE (y)              @Median          @Median       @UNIVARIATE       76
+   32    AGE      @Page @01 @Order @140 @AGE (y)              @Min, Max        @Min Max      @UNIVARIATE    52, 89
+   33    BMIBL    @Page @03 @Order @210 @Baseline BMI         @N               @N            @UNIVARIATE       86
+   34    BMIBL    @Page @03 @Order @220 @Baseline BMI         @Mean(SD)        @Mean StdDev  @UNIVARIATE    24(3.7)
+   35    BMIBL    @Page @03 @Order @230 @Baseline BMI         @Median          @Median       @UNIVARIATE       23
+   36    BMIBL    @Page @03 @Order @240 @Baseline BMI         @Min, Max        @Min Max      @UNIVARIATE    15, 33
+   37    DURDIS   @Page @02 @Order @110 @Duration of disease  @N               @N            @UNIVARIATE       86
+   38    DURDIS   @Page @02 @Order @120 @Duration of disease  @Mean(SD)        @Mean StdDev  @UNIVARIATE    43(30.2)
+   39    DURDIS   @Page @02 @Order @130 @Duration of disease  @Median          @Median       @UNIVARIATE       35
+   40    DURDIS   @Page @02 @Order @140 @Duration of disease  @Min, Max        @Min Max      @UNIVARIATE    7, 183
+   41    EDUCLVL  @Page @02 @Order @210 @Years of Education   @N               @N            @UNIVARIATE       86
+   42    EDUCLVL  @Page @02 @Order @220 @Years of Education   @Mean(SD)        @Mean StdDev  @UNIVARIATE    13(2.9)
+   43    EDUCLVL  @Page @02 @Order @230 @Years of Education   @Median          @Median       @UNIVARIATE       12
+   44    EDUCLVL  @Page @02 @Order @240 @Years of Education   @Min, Max        @Min Max      @UNIVARIATE    6, 21
+   45    HEIGHTBL @Page @03 @Order @110 @Baseline height(cm)  @N               @N            @UNIVARIATE       86
+   46    HEIGHTBL @Page @03 @Order @120 @Baseline height(cm)  @Mean(SD)        @Mean StdDev  @UNIVARIATE    163(11.5)
+   47    HEIGHTBL @Page @03 @Order @130 @Baseline height(cm)  @Median          @Median       @UNIVARIATE      163
+   48    HEIGHTBL @Page @03 @Order @140 @Baseline height(cm)  @Min, Max        @Min Max      @UNIVARIATE    137, 185
+   49    MMSETOT  @Page @01 @Order @510 @MMSE                 @N               @N            @UNIVARIATE       86
+   50    MMSETOT  @Page @01 @Order @520 @MMSE                 @Mean(SD)        @Mean StdDev  @UNIVARIATE    18(4.3)
+   51    MMSETOT  @Page @01 @Order @530 @MMSE                 @Median          @Median       @UNIVARIATE       20
+   52    MMSETOT  @Page @01 @Order @540 @MMSE                 @Min, Max        @Min Max      @UNIVARIATE    10, 23
+   53    WEIGHTBL @Page @02 @Order @310 @Baseline weight(kg)  @N               @N            @UNIVARIATE       86
+   54    WEIGHTBL @Page @02 @Order @320 @Baseline weight(kg)  @Mean(SD)        @Mean StdDev  @UNIVARIATE    63(12.8)
+   55    WEIGHTBL @Page @02 @Order @330 @Baseline weight(kg)  @Median          @Median       @UNIVARIATE       61
+   56    WEIGHTBL @Page @02 @Order @340 @Baseline weight(kg)  @Min, Max        @Min Max      @UNIVARIATE    34, 86
+   57    AGE      @Page @01 @Order @110 @AGE (y)              @N               @N            @UNIVARIATE       84
+   58    AGE      @Page @01 @Order @120 @AGE (y)              @Mean(SD)        @Mean StdDev  @UNIVARIATE    74(7.9)
+   59    AGE      @Page @01 @Order @130 @AGE (y)              @Median          @Median       @UNIVARIATE       76
+   60    AGE      @Page @01 @Order @140 @AGE (y)              @Min, Max        @Min Max      @UNIVARIATE    56, 88
+   61    BMIBL    @Page @03 @Order @210 @Baseline BMI         @N               @N            @UNIVARIATE       84
+   62    BMIBL    @Page @03 @Order @220 @Baseline BMI         @Mean(SD)        @Mean StdDev  @UNIVARIATE    25(4.2)
+   63    BMIBL    @Page @03 @Order @230 @Baseline BMI         @Median          @Median       @UNIVARIATE       25
+   64    BMIBL    @Page @03 @Order @240 @Baseline BMI         @Min, Max        @Min Max      @UNIVARIATE    14, 35
+   65    DURDIS   @Page @02 @Order @110 @Duration of disease  @N               @N            @UNIVARIATE       84
+   66    DURDIS   @Page @02 @Order @120 @Duration of disease  @Mean(SD)        @Mean StdDev  @UNIVARIATE    41(24.7)
+   67    DURDIS   @Page @02 @Order @130 @Duration of disease  @Median          @Median       @UNIVARIATE       36
+   68    DURDIS   @Page @02 @Order @140 @Duration of disease  @Min, Max        @Min Max      @UNIVARIATE    2, 135
+   69    EDUCLVL  @Page @02 @Order @210 @Years of Education   @N               @N            @UNIVARIATE       84
+   70    EDUCLVL  @Page @02 @Order @220 @Years of Education   @Mean(SD)        @Mean StdDev  @UNIVARIATE    13(2.9)
+   71    EDUCLVL  @Page @02 @Order @230 @Years of Education   @Median          @Median       @UNIVARIATE       12
+   72    EDUCLVL  @Page @02 @Order @240 @Years of Education   @Min, Max        @Min Max      @UNIVARIATE    6, 20
+   73    HEIGHTBL @Page @03 @Order @110 @Baseline height(cm)  @N               @N            @UNIVARIATE       84
+   74    HEIGHTBL @Page @03 @Order @120 @Baseline height(cm)  @Mean(SD)        @Mean StdDev  @UNIVARIATE    166(10.1)
+   75    HEIGHTBL @Page @03 @Order @130 @Baseline height(cm)  @Median          @Median       @UNIVARIATE      165
+   76    HEIGHTBL @Page @03 @Order @140 @Baseline height(cm)  @Min, Max        @Min Max      @UNIVARIATE    146, 191
+   77    MMSETOT  @Page @01 @Order @510 @MMSE                 @N               @N            @UNIVARIATE       84
+   78    MMSETOT  @Page @01 @Order @520 @MMSE                 @Mean(SD)        @Mean StdDev  @UNIVARIATE    19(4.2)
+   79    MMSETOT  @Page @01 @Order @530 @MMSE                 @Median          @Median       @UNIVARIATE       20
+   80    MMSETOT  @Page @01 @Order @540 @MMSE                 @Min, Max        @Min Max      @UNIVARIATE    10, 24
+   81    WEIGHTBL @Page @02 @Order @310 @Baseline weight(kg)  @N               @N            @UNIVARIATE       84
+   82    WEIGHTBL @Page @02 @Order @320 @Baseline weight(kg)  @Mean(SD)        @Mean StdDev  @UNIVARIATE    70(14.7)
+   83    WEIGHTBL @Page @02 @Order @330 @Baseline weight(kg)  @Median          @Median       @UNIVARIATE       69
+   84    WEIGHTBL @Page @02 @Order @340 @Baseline weight(kg)  @Min, Max        @Min Max      @UNIVARIATE    42, 108
+   85    AGE      @Page @01 @Order @110 @AGE (y)              @N               @N            @UNIVARIATE       84
+   86    AGE      @Page @01 @Order @120 @AGE (y)              @Mean(SD)        @Mean StdDev  @UNIVARIATE    76(8.3)
+   87    AGE      @Page @01 @Order @130 @AGE (y)              @Median          @Median       @UNIVARIATE       78
+   88    AGE      @Page @01 @Order @140 @AGE (y)              @Min, Max        @Min Max      @UNIVARIATE    51, 88
+   89    BMIBL    @Page @03 @Order @210 @Baseline BMI         @N               @N            @UNIVARIATE       83
+   90    BMIBL    @Page @03 @Order @220 @Baseline BMI         @Mean(SD)        @Mean StdDev  @UNIVARIATE    25(4.3)
+   91    BMIBL    @Page @03 @Order @230 @Baseline BMI         @Median          @Median       @UNIVARIATE       24
+   92    BMIBL    @Page @03 @Order @240 @Baseline BMI         @Min, Max        @Min Max      @UNIVARIATE    18, 40
+   93    DURDIS   @Page @02 @Order @110 @Duration of disease  @N               @N            @UNIVARIATE       84
+   94    DURDIS   @Page @02 @Order @120 @Duration of disease  @Mean(SD)        @Mean StdDev  @UNIVARIATE    49(29.6)
+   95    DURDIS   @Page @02 @Order @130 @Duration of disease  @Median          @Median       @UNIVARIATE       40
+   96    DURDIS   @Page @02 @Order @140 @Duration of disease  @Min, Max        @Min Max      @UNIVARIATE    8, 131
+   97    EDUCLVL  @Page @02 @Order @210 @Years of Education   @N               @N            @UNIVARIATE       84
+   98    EDUCLVL  @Page @02 @Order @220 @Years of Education   @Mean(SD)        @Mean StdDev  @UNIVARIATE    13(4.1)
+   99    EDUCLVL  @Page @02 @Order @230 @Years of Education   @Median          @Median       @UNIVARIATE       12
+  100    EDUCLVL  @Page @02 @Order @240 @Years of Education   @Min, Max        @Min Max      @UNIVARIATE    3, 24
+  101    HEIGHTBL @Page @03 @Order @110 @Baseline height(cm)  @N               @N            @UNIVARIATE       84
+  102    HEIGHTBL @Page @03 @Order @120 @Baseline height(cm)  @Mean(SD)        @Mean StdDev  @UNIVARIATE    163(10.4)
+  103    HEIGHTBL @Page @03 @Order @130 @Baseline height(cm)  @Median          @Median       @UNIVARIATE      163
+  104    HEIGHTBL @Page @03 @Order @140 @Baseline height(cm)  @Min, Max        @Min Max      @UNIVARIATE    136, 196
+  105    MMSETOT  @Page @01 @Order @510 @MMSE                 @N               @N            @UNIVARIATE       84
+  106    MMSETOT  @Page @01 @Order @520 @MMSE                 @Mean(SD)        @Mean StdDev  @UNIVARIATE    18(4.2)
+  107    MMSETOT  @Page @01 @Order @530 @MMSE                 @Median          @Median       @UNIVARIATE       18
+  108    MMSETOT  @Page @01 @Order @540 @MMSE                 @Min, Max        @Min Max      @UNIVARIATE    10, 24
+  109    WEIGHTBL @Page @02 @Order @310 @Baseline weight(kg)  @N               @N            @UNIVARIATE       83
+  110    WEIGHTBL @Page @02 @Order @320 @Baseline weight(kg)  @Mean(SD)        @Mean StdDev  @UNIVARIATE    67(14.1)
+  111    WEIGHTBL @Page @02 @Order @330 @Baseline weight(kg)  @Median          @Median       @UNIVARIATE       65
+  112    WEIGHTBL @Page @02 @Order @340 @Baseline weight(kg)  @Min, Max        @Min Max      @UNIVARIATE    45, 106
+  113    AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT          144(57%)
+  114    AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT          33(13%)
+  115    AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT          77(30%)
+  116    BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT          149(59%)
+  117    BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT          76(30%)
+  118    BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT          28(11%)
+  119    DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT          12(5%)
+  120    DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT          242(95%)
+  121    RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT          0(0%)
+  122    RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT          230(91%)
+  123    RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT          23(9%)
+  124    RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT          1(0%)
+  125    SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT          0(0%)
+  126    SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT          111(44%)
+  127    SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT          143(56%)
+  128    AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT          42(49%)
+  129    AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT          14(16%)
+  130    AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT          30(35%)
+  131    BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT          59(69%)
+  132    BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT          21(24%)
+  133    BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT          6(7%)
+  134    DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT          5(6%)
+  135    DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT          81(94%)
+  136    RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT          0(0%)
+  137    RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT          78(91%)
+  138    RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT          8(9%)
+  139    RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT          0(0%)
+  140    SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT          0(0%)
+  141    SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT          33(38%)
+  142    SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT          53(62%)
+  143    AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT          55(65%)
+  144    AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT          11(13%)
+  145    AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT          18(21%)
+  146    BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT          44(52%)
+  147    BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT          28(33%)
+  148    BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT          12(14%)
+  149    DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT          4(5%)
+  150    DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT          80(95%)
+  151    RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT          0(0%)
+  152    RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT          74(88%)
+  153    RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT          9(11%)
+  154    RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT          1(1%)
+  155    SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT          0(0%)
+  156    SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT          44(52%)
+  157    SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT          40(48%)
+  158    AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT          47(56%)
+  159    AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT          8(10%)
+  160    AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT          29(35%)
+  161    BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT          46(55%)
+  162    BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT          27(33%)
+  163    BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT          10(12%)
+  164    DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT          3(4%)
+  165    DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT          81(96%)
+  166    RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT          0(0%)
+  167    RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT          78(93%)
+  168    RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT          6(7%)
+  169    RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT          0(0%)
+  170    SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT          0(0%)
+  171    SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT          34(40%)
+  172    SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT          50(60%)
+
+  Obs    TRT        GRP
+
+    1    All        AGE
+    2    All        AGE
+    3    All        AGE
+    4    All        AGE
+    5    All        BMIBL
+    6    All        BMIBL
+    7    All        BMIBL
+    8    All        BMIBL
+    9    All        DURDIS
+   10    All        DURDIS
+   11    All        DURDIS
+   12    All        DURDIS
+   13    All        EDUCLVL
+   14    All        EDUCLVL
+   15    All        EDUCLVL
+   16    All        EDUCLVL
+   17    All        HEIGHTBL
+   18    All        HEIGHTBL
+   19    All        HEIGHTBL
+   20    All        HEIGHTBL
+   21    All        MMSETOT
+   22    All        MMSETOT
+   23    All        MMSETOT
+   24    All        MMSETOT
+   25    All        WEIGHTBL
+   26    All        WEIGHTBL
+   27    All        WEIGHTBL
+   28    All        WEIGHTBL
+   29    Placebo    AGE
+   30    Placebo    AGE
+   31    Placebo    AGE
+   32    Placebo    AGE
+   33    Placebo    BMIBL
+   34    Placebo    BMIBL
+   35    Placebo    BMIBL
+   36    Placebo    BMIBL
+   37    Placebo    DURDIS
+   38    Placebo    DURDIS
+   39    Placebo    DURDIS
+   40    Placebo    DURDIS
+   41    Placebo    EDUCLVL
+   42    Placebo    EDUCLVL
+   43    Placebo    EDUCLVL
+   44    Placebo    EDUCLVL
+   45    Placebo    HEIGHTBL
+   46    Placebo    HEIGHTBL
+   47    Placebo    HEIGHTBL
+   48    Placebo    HEIGHTBL
+   49    Placebo    MMSETOT
+   50    Placebo    MMSETOT
+   51    Placebo    MMSETOT
+   52    Placebo    MMSETOT
+   53    Placebo    WEIGHTBL
+   54    Placebo    WEIGHTBL
+   55    Placebo    WEIGHTBL
+   56    Placebo    WEIGHTBL
+   57    XH         AGE
+   58    XH         AGE
+   59    XH         AGE
+   60    XH         AGE
+   61    XH         BMIBL
+   62    XH         BMIBL
+   63    XH         BMIBL
+   64    XH         BMIBL
+   65    XH         DURDIS
+   66    XH         DURDIS
+   67    XH         DURDIS
+   68    XH         DURDIS
+   69    XH         EDUCLVL
+   70    XH         EDUCLVL
+   71    XH         EDUCLVL
+   72    XH         EDUCLVL
+   73    XH         HEIGHTBL
+   74    XH         HEIGHTBL
+   75    XH         HEIGHTBL
+   76    XH         HEIGHTBL
+   77    XH         MMSETOT
+   78    XH         MMSETOT
+   79    XH         MMSETOT
+   80    XH         MMSETOT
+   81    XH         WEIGHTBL
+   82    XH         WEIGHTBL
+   83    XH         WEIGHTBL
+   84    XH         WEIGHTBL
+   85    XL         AGE
+   86    XL         AGE
+   87    XL         AGE
+   88    XL         AGE
+   89    XL         BMIBL
+   90    XL         BMIBL
+   91    XL         BMIBL
+   92    XL         BMIBL
+   93    XL         DURDIS
+   94    XL         DURDIS
+   95    XL         DURDIS
+   96    XL         DURDIS
+   97    XL         EDUCLVL
+   98    XL         EDUCLVL
+   99    XL         EDUCLVL
+  100    XL         EDUCLVL
+  101    XL         HEIGHTBL
+  102    XL         HEIGHTBL
+  103    XL         HEIGHTBL
+  104    XL         HEIGHTBL
+  105    XL         MMSETOT
+  106    XL         MMSETOT
+  107    XL         MMSETOT
+  108    XL         MMSETOT
+  109    XL         WEIGHTBL
+  110    XL         WEIGHTBL
+  111    XL         WEIGHTBL
+  112    XL         WEIGHTBL
+  113    All        AGEGR1N
+  114    All        AGEGR1N
+  115    All        AGEGR1N
+  116    All        BMICD
+  117    All        BMICD
+  118    All        BMICD
+  119    All        DURDISCD
+  120    All        DURDISCD
+  121    All        RACEN
+  122    All        RACEN
+  123    All        RACEN
+  124    All        RACEN
+  125    All        SEXN
+  126    All        SEXN
+  127    All        SEXN
+  128    Placebo    AGEGR1N
+  129    Placebo    AGEGR1N
+  130    Placebo    AGEGR1N
+  131    Placebo    BMICD
+  132    Placebo    BMICD
+  133    Placebo    BMICD
+  134    Placebo    DURDISCD
+  135    Placebo    DURDISCD
+  136    Placebo    RACEN
+  137    Placebo    RACEN
+  138    Placebo    RACEN
+  139    Placebo    RACEN
+  140    Placebo    SEXN
+  141    Placebo    SEXN
+  142    Placebo    SEXN
+  143    XH         AGEGR1N
+  144    XH         AGEGR1N
+  145    XH         AGEGR1N
+  146    XH         BMICD
+  147    XH         BMICD
+  148    XH         BMICD
+  149    XH         DURDISCD
+  150    XH         DURDISCD
+  151    XH         RACEN
+  152    XH         RACEN
+  153    XH         RACEN
+  154    XH         RACEN
+  155    XH         SEXN
+  156    XH         SEXN
+  157    XH         SEXN
+  158    XL         AGEGR1N
+  159    XL         AGEGR1N
+  160    XL         AGEGR1N
+  161    XL         BMICD
+  162    XL         BMICD
+  163    XL         BMICD
+  164    XL         DURDISCD
+  165    XL         DURDISCD
+  166    XL         RACEN
+  167    XL         RACEN
+  168    XL         RACEN
+  169    XL         RACEN
+  170    XL         SEXN
+  171    XL         SEXN
+  172    XL         SEXN
+
+  Obs    QUESTION                                                                                           ALL
+
+    1    AGE      @Page @01 @Order @110 @AGE (y)              @N               @N            @UNIVARIATE      254
+    2    AGE      @Page @01 @Order @120 @AGE (y)              @Mean(SD)        @Mean StdDev  @UNIVARIATE    75(8.2)
+    3    AGE      @Page @01 @Order @130 @AGE (y)              @Median          @Median       @UNIVARIATE       77
+    4    AGE      @Page @01 @Order @140 @AGE (y)              @Min, Max        @Min Max      @UNIVARIATE    51, 89
+    5    AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT          144(57%)
+    6    AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT          33(13%)
+    7    AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT          77(30%)
+    8    BMIBL    @Page @03 @Order @210 @Baseline BMI         @N               @N            @UNIVARIATE      253
+    9    BMIBL    @Page @03 @Order @220 @Baseline BMI         @Mean(SD)        @Mean StdDev  @UNIVARIATE    25(4.1)
+   10    BMIBL    @Page @03 @Order @230 @Baseline BMI         @Median          @Median       @UNIVARIATE       24
+   11    BMIBL    @Page @03 @Order @240 @Baseline BMI         @Min, Max        @Min Max      @UNIVARIATE    14, 40
+   12    BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT          149(59%)
+   13    BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT          76(30%)
+   14    BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT          28(11%)
+   15    DURDIS   @Page @02 @Order @110 @Duration of disease  @N               @N            @UNIVARIATE      254
+   16    DURDIS   @Page @02 @Order @120 @Duration of disease  @Mean(SD)        @Mean StdDev  @UNIVARIATE    44(28.4)
+   17    DURDIS   @Page @02 @Order @130 @Duration of disease  @Median          @Median       @UNIVARIATE       36
+   18    DURDIS   @Page @02 @Order @140 @Duration of disease  @Min, Max        @Min Max      @UNIVARIATE    2, 183
+   19    DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT          12(5%)
+   20    DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT          242(95%)
+   21    EDUCLVL  @Page @02 @Order @210 @Years of Education   @N               @N            @UNIVARIATE      254
+   22    EDUCLVL  @Page @02 @Order @220 @Years of Education   @Mean(SD)        @Mean StdDev  @UNIVARIATE    13(3.4)
+   23    EDUCLVL  @Page @02 @Order @230 @Years of Education   @Median          @Median       @UNIVARIATE       12
+   24    EDUCLVL  @Page @02 @Order @240 @Years of Education   @Min, Max        @Min Max      @UNIVARIATE    3, 24
+   25    HEIGHTBL @Page @03 @Order @110 @Baseline height(cm)  @N               @N            @UNIVARIATE      254
+   26    HEIGHTBL @Page @03 @Order @120 @Baseline height(cm)  @Mean(SD)        @Mean StdDev  @UNIVARIATE    164(10.8)
+   27    HEIGHTBL @Page @03 @Order @130 @Baseline height(cm)  @Median          @Median       @UNIVARIATE      163
+   28    HEIGHTBL @Page @03 @Order @140 @Baseline height(cm)  @Min, Max        @Min Max      @UNIVARIATE    136, 196
+   29    MMSETOT  @Page @01 @Order @510 @MMSE                 @N               @N            @UNIVARIATE      254
+   30    MMSETOT  @Page @01 @Order @520 @MMSE                 @Mean(SD)        @Mean StdDev  @UNIVARIATE    18(4.2)
+   31    MMSETOT  @Page @01 @Order @530 @MMSE                 @Median          @Median       @UNIVARIATE       19
+   32    MMSETOT  @Page @01 @Order @540 @MMSE                 @Min, Max        @Min Max      @UNIVARIATE    10, 24
+   33    RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT          0(0%)
+   34    RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT          230(91%)
+   35    RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT          23(9%)
+   36    RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT          1(0%)
+   37    SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT          0(0%)
+   38    SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT          111(44%)
+   39    SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT          143(56%)
+   40    WEIGHTBL @Page @02 @Order @310 @Baseline weight(kg)  @N               @N            @UNIVARIATE      253
+   41    WEIGHTBL @Page @02 @Order @320 @Baseline weight(kg)  @Mean(SD)        @Mean StdDev  @UNIVARIATE    67(14.1)
+   42    WEIGHTBL @Page @02 @Order @330 @Baseline weight(kg)  @Median          @Median       @UNIVARIATE       67
+   43    WEIGHTBL @Page @02 @Order @340 @Baseline weight(kg)  @Min, Max        @Min Max      @UNIVARIATE    34, 108
+
+  Obs    PLACEBO      XH           XL
+
+    1       86           84           84
+    2    75(8.6)      74(7.9)      76(8.3)
+    3       76           76           78
+    4    52, 89       56, 88       51, 88
+    5    42(49%)      55(65%)      47(56%)
+    6    14(16%)      11(13%)      8(10%)
+    7    30(35%)      18(21%)      29(35%)
+    8       86           84           83
+    9    24(3.7)      25(4.2)      25(4.3)
+   10       23           25           24
+   11    15, 33       14, 35       18, 40
+   12    59(69%)      44(52%)      46(55%)
+   13    21(24%)      28(33%)      27(33%)
+   14    6(7%)        12(14%)      10(12%)
+   15       86           84           84
+   16    43(30.2)     41(24.7)     49(29.6)
+   17       35           36           40
+   18    7, 183       2, 135       8, 131
+   19    5(6%)        4(5%)        3(4%)
+   20    81(94%)      80(95%)      81(96%)
+   21       86           84           84
+   22    13(2.9)      13(2.9)      13(4.1)
+   23       12           12           12
+   24    6, 21        6, 20        3, 24
+   25       86           84           84
+   26    163(11.5)    166(10.1)    163(10.4)
+   27      163          165          163
+   28    137, 185     146, 191     136, 196
+   29       86           84           84
+   30    18(4.3)      19(4.2)      18(4.2)
+   31       20           20           18
+   32    10, 23       10, 24       10, 24
+   33    0(0%)        0(0%)        0(0%)
+   34    78(91%)      74(88%)      78(93%)
+   35    8(9%)        9(11%)       6(7%)
+   36    0(0%)        1(1%)        0(0%)
+   37    0(0%)        0(0%)        0(0%)
+   38    33(38%)      44(52%)      34(40%)
+   39    53(62%)      40(48%)      50(60%)
+   40       86           84           83
+   41    63(12.8)     70(14.7)     67(14.1)
+   42       61           69           65
+   43    34, 86       42, 108      45, 106
+                                                   The GLM Procedure
+                                                Class Level Information     
+
+                                           Class       Levels  Values       
+                                           --------  --------  -------------
+                                           TRT              3  Placebo XH XL
+
+                                         Number of Observations Read       254
+                                         Number of Observations Used       254
+
+                                                   The GLM Procedure
+                                                Dependent Variable: AGE                          
+
+                       Source                 DF  Sum of Squares  Mean Square   F Value    Pr > F
+                       ---------------  --------  --------------  -----------  --------  --------
+                       Model                   2        71.38574     35.69287      0.52    0.5934
+                       Error                 251     17132.70875     68.25780                    
+                       Corrected Total       253     17204.09449                                 
+
+                                        R-Square  Coeff Var  Root MSE  AGE Mean
+                                        --------  ---------  --------  --------
+                                        0.004149   11.00306  8.261828  75.08661
+
+                            Source          DF    Type I SS  Mean Square   F Value    Pr > F
+                            --------  --------  -----------  -----------  --------  --------
+                            TRT              2  71.38573957  35.69286979      0.52    0.5934
+
+                            Source          DF  Type III SS  Mean Square   F Value    Pr > F
+                            --------  --------  -----------  -----------  --------  --------
+                            TRT              2  71.38573957  35.69286979      0.52    0.5934
+
+                                                   The GLM Procedure
+                                                Class Level Information     
+
+                                           Class       Levels  Values       
+                                           --------  --------  -------------
+                                           TRT              3  Placebo XH XL
+
+                                         Number of Observations Read       254
+                                         Number of Observations Used       253
+
+                                                   The GLM Procedure
+                                               Dependent Variable: BMIBL                         
+
+                       Source                 DF  Sum of Squares  Mean Square   F Value    Pr > F
+                       ---------------  --------  --------------  -----------  --------  --------
+                       Model                   2      143.304328    71.652164      4.39    0.0133
+                       Error                 250     4076.681996    16.306728                    
+                       Corrected Total       252     4219.986324                                 
+
+                                       R-Square  Coeff Var  Root MSE  BMIBL Mean
+                                       --------  ---------  --------  ----------
+                                       0.033958   16.36716  4.038159    24.67233
+
+                            Source          DF    Type I SS  Mean Square   F Value    Pr > F
+                            --------  --------  -----------  -----------  --------  --------
+                            TRT              2  143.3043276   71.6521638      4.39    0.0133
+
+                            Source          DF  Type III SS  Mean Square   F Value    Pr > F
+                            --------  --------  -----------  -----------  --------  --------
+                            TRT              2  143.3043276   71.6521638      4.39    0.0133
+
+                                                   The GLM Procedure
+                                                Class Level Information     
+
+                                           Class       Levels  Values       
+                                           --------  --------  -------------
+                                           TRT              3  Placebo XH XL
+
+                                         Number of Observations Read       254
+                                         Number of Observations Used       254
+
+                                                   The GLM Procedure
+                                               Dependent Variable: DURDIS                        
+
+                       Source                 DF  Sum of Squares  Mean Square   F Value    Pr > F
+                       ---------------  --------  --------------  -----------  --------  --------
+                       Model                   2       3029.5914    1514.7957      1.89    0.1530
+                       Error                 251     200991.5149     800.7630                    
+                       Corrected Total       253     204021.1063                                 
+
+                                       R-Square  Coeff Var  Root MSE  DURDIS Mean
+                                       --------  ---------  --------  -----------
+                                       0.014849   64.40183  28.29776     43.93937
+
+                            Source          DF    Type I SS  Mean Square   F Value    Pr > F
+                            --------  --------  -----------  -----------  --------  --------
+                            TRT              2  3029.591418  1514.795709      1.89    0.1530
+
+                            Source          DF  Type III SS  Mean Square   F Value    Pr > F
+                            --------  --------  -----------  -----------  --------  --------
+                            TRT              2  3029.591418  1514.795709      1.89    0.1530
+
+                                                   The GLM Procedure
+                                                Class Level Information     
+
+                                           Class       Levels  Values       
+                                           --------  --------  -------------
+                                           TRT              3  Placebo XH XL
+
+                                         Number of Observations Read       254
+                                         Number of Observations Used       254
+
+                                                   The GLM Procedure
+                                              Dependent Variable: EDUCLVL                        
+
+                       Source                 DF  Sum of Squares  Mean Square   F Value    Pr > F
+                       ---------------  --------  --------------  -----------  --------  --------
+                       Model                   2       21.789021    10.894511      0.95    0.3875
+                       Error                 251     2873.584994    11.448546                    
+                       Corrected Total       253     2895.374016                                 
+
+                                      R-Square  Coeff Var  Root MSE  EDUCLVL Mean
+                                      --------  ---------  --------  ------------
+                                      0.007525   26.53371  3.383570      12.75197
+
+                            Source          DF    Type I SS  Mean Square   F Value    Pr > F
+                            --------  --------  -----------  -----------  --------  --------
+                            TRT              2  21.78902129  10.89451064      0.95    0.3875
+
+                            Source          DF  Type III SS  Mean Square   F Value    Pr > F
+                            --------  --------  -----------  -----------  --------  --------
+                            TRT              2  21.78902129  10.89451064      0.95    0.3875
+
+                                                   The GLM Procedure
+                                                Class Level Information     
+
+                                           Class       Levels  Values       
+                                           --------  --------  -------------
+                                           TRT              3  Placebo XH XL
+
+                                         Number of Observations Read       254
+                                         Number of Observations Used       254
+
+                                                   The GLM Procedure
+                                              Dependent Variable: HEIGHTBL                       
+
+                       Source                 DF  Sum of Squares  Mean Square   F Value    Pr > F
+                       ---------------  --------  --------------  -----------  --------  --------
+                       Model                   2       479.15728    239.57864      2.09    0.1262
+                       Error                 251     28815.01075    114.80084                    
+                       Corrected Total       253     29294.16803                                 
+
+                                      R-Square  Coeff Var  Root MSE  HEIGHTBL Mean
+                                      --------  ---------  --------  -------------
+                                      0.016357   6.535971  10.71452       163.9315
+
+                            Source          DF    Type I SS  Mean Square   F Value    Pr > F
+                            --------  --------  -----------  -----------  --------  --------
+                            TRT              2  479.1572812  239.5786406      2.09    0.1262
+
+                            Source          DF  Type III SS  Mean Square   F Value    Pr > F
+                            --------  --------  -----------  -----------  --------  --------
+                            TRT              2  479.1572812  239.5786406      2.09    0.1262
+
+                                                   The GLM Procedure
+                                                Class Level Information     
+
+                                           Class       Levels  Values       
+                                           --------  --------  -------------
+                                           TRT              3  Placebo XH XL
+
+                                         Number of Observations Read       254
+                                         Number of Observations Used       254
+
+                                                   The GLM Procedure
+                                              Dependent Variable: MMSETOT                        
+
+                       Source                 DF  Sum of Squares  Mean Square   F Value    Pr > F
+                       ---------------  --------  --------------  -----------  --------  --------
+                       Model                   2       18.536065     9.268033      0.52    0.5947
+                       Error                 251     4466.361573    17.794269                    
+                       Corrected Total       253     4484.897638                                 
+
+                                      R-Square  Coeff Var  Root MSE  MMSETOT Mean
+                                      --------  ---------  --------  ------------
+                                      0.004133   23.25205  4.218325      18.14173
+
+                            Source          DF    Type I SS  Mean Square   F Value    Pr > F
+                            --------  --------  -----------  -----------  --------  --------
+                            TRT              2  18.53606526   9.26803263      0.52    0.5947
+
+                            Source          DF  Type III SS  Mean Square   F Value    Pr > F
+                            --------  --------  -----------  -----------  --------  --------
+                            TRT              2  18.53606526   9.26803263      0.52    0.5947
+
+                                                   The GLM Procedure
+                                                Class Level Information     
+
+                                           Class       Levels  Values       
+                                           --------  --------  -------------
+                                           TRT              3  Placebo XH XL
+
+                                         Number of Observations Read       254
+                                         Number of Observations Used       253
+
+                                                   The GLM Procedure
+                                              Dependent Variable: WEIGHTBL                       
+
+                       Source                 DF  Sum of Squares  Mean Square   F Value    Pr > F
+                       ---------------  --------  --------------  -----------  --------  --------
+                       Model                   2      2280.09047   1140.04524      5.93    0.0030
+                       Error                 250     48043.60083    192.17440                    
+                       Corrected Total       252     50323.69130                                 
+
+                                      R-Square  Coeff Var  Root MSE  WEIGHTBL Mean
+                                      --------  ---------  --------  -------------
+                                      0.045308   20.79993  13.86270       66.64783
+
+                            Source          DF    Type I SS  Mean Square   F Value    Pr > F
+                            --------  --------  -----------  -----------  --------  --------
+                            TRT              2  2280.090470  1140.045235      5.93    0.0030
+
+                            Source          DF  Type III SS  Mean Square   F Value    Pr > F
+                            --------  --------  -----------  -----------  --------  --------
+                            TRT              2  2280.090470  1140.045235      5.93    0.0030
+
+
+       Obs    Dependent    Source              DF              SS              MS          FValue           ProbF
+
+        1        AGE       Model                2    71.385739573    35.692869787    0.5229126607    0.5934357753
+        2        AGE       Error              251    17132.708749    68.257803779     .               .
+        3        AGE       Corrected Total    253    17204.094488      .              .               .
+
+                                              Obs    FRO             PVAL
+
+                                               1     AGE         0.593435
+                                               2     BMIBL       0.013319
+                                               3     DURDIS      0.152960
+                                               4     EDUCLVL     0.387508
+                                               5     HEIGHTBL    0.126217
+                                               6     MMSETOT     0.594659
+                                               7     WEIGHTBL    0.003040
+                                                   The FREQ Procedure
+
+                                                Table of TRT by AGEGR1N
+
+                                TRT      AGEGR1N
+
+                                Frequency
+                                Expected
+                                Percent
+                                Row Pct
+                                Col Pct
+
+                                TRT     |         1 |         2 |         3 |      Total
+                                --------+-----------+-----------+-----------+-----------
+                                Placebo |        14 |        42 |        30 |         86
+                                        |     11.17 |     48.76 |     26.07 |           
+                                        |      5.51 |     16.54 |     11.81 |      33.86
+                                        |     16.28 |     48.84 |     34.88 |           
+                                        |     42.42 |     29.17 |     38.96 |           
+                                --------+-----------+-----------+-----------+-----------
+                                XH      |        11 |        55 |        18 |         84
+                                        |     10.91 |     47.62 |     25.46 |           
+                                        |      4.33 |     21.65 |      7.09 |      33.07
+                                        |     13.10 |     65.48 |     21.43 |           
+                                        |     33.33 |     38.19 |     23.38 |           
+                                --------+-----------+-----------+-----------+-----------
+                                XL      |         8 |        47 |        29 |         84
+                                        |     10.91 |     47.62 |     25.46 |           
+                                        |      3.15 |     18.50 |     11.42 |      33.07
+                                        |      9.52 |     55.95 |     34.52 |           
+                                        |     24.24 |     32.64 |     37.66 |           
+                                --------+-----------+-----------+-----------+-----------
+                                Total   |        33 |       144 |        77 |        254
+                                        |     12.99 |     56.69 |     30.31 |     100.00
+
+                                         Statistics for Table of TRT by AGEGR1N
+
+                                 Statistic                     DF       Value      Prob
+                                 ------------------------------------------------------
+                                 Chi-Square                     4      6.8520    0.1439
+                                 Likelihood Ratio Chi-Square    4      7.0734    0.1321
+                                 Mantel-Haenszel Chi-Square     1      0.4156    0.5192
+                                 Phi Coefficient                       0.1642
+                                 Contingency Coefficient               0.1621
+                                 Cramer's V                            0.1161
+
+                                                   The FREQ Procedure
+
+                                                 Table of TRT by BMICD
+
+                                TRT      BMICD
+
+                                Frequency
+                                Expected
+                                Percent
+                                Row Pct
+                                Col Pct
+
+                                TRT     |         1 |         2 |         3 |      Total
+                                --------+-----------+-----------+-----------+-----------
+                                Placebo |        59 |        21 |         6 |         86
+                                        |     50.65 |     25.83 |      9.52 |           
+                                        |     23.32 |      8.30 |      2.37 |      33.99
+                                        |     68.60 |     24.42 |      6.98 |           
+                                        |     39.60 |     27.63 |     21.43 |           
+                                --------+-----------+-----------+-----------+-----------
+                                XH      |        44 |        28 |        12 |         84
+                                        |     49.47 |     25.23 |      9.30 |           
+                                        |     17.39 |     11.07 |      4.74 |      33.20
+                                        |     52.38 |     33.33 |     14.29 |           
+                                        |     29.53 |     36.84 |     42.86 |           
+                                --------+-----------+-----------+-----------+-----------
+                                XL      |        46 |        27 |        10 |         83
+                                        |     48.88 |     24.93 |      9.19 |           
+                                        |     18.18 |     10.67 |      3.95 |      32.81
+                                        |     55.42 |     32.53 |     12.05 |           
+                                        |     30.87 |     35.53 |     35.71 |           
+                                --------+-----------+-----------+-----------+-----------
+                                Total   |       149 |        76 |        28 |        253
+                                        |     58.89 |     30.04 |     11.07 |     100.00
+
+                                                 Frequency Missing = 1
+
+                                          Statistics for Table of TRT by BMICD
+
+                                 Statistic                     DF       Value      Prob
+                                 ------------------------------------------------------
+                                 Chi-Square                     4      5.6898    0.2235
+                                 Likelihood Ratio Chi-Square    4      5.8239    0.2127
+                                 Mantel-Haenszel Chi-Square     1      3.0331    0.0816
+                                 Phi Coefficient                       0.1500
+                                 Contingency Coefficient               0.1483
+                                 Cramer's V                            0.1060
+
+                                                   The FREQ Procedure
+
+                                                Table of TRT by DURDISCD
+
+                                      TRT      DURDISCD
+
+                                      Frequency
+                                      Expected
+                                      Percent
+                                      Row Pct
+                                      Col Pct
+
+                                      TRT     |         1 |         2 |      Total
+                                      --------+-----------+-----------+-----------
+                                      Placebo |         5 |        81 |         86
+                                              |      4.06 |     81.94 |           
+                                              |      1.97 |     31.89 |      33.86
+                                              |      5.81 |     94.19 |           
+                                              |     41.67 |     33.47 |           
+                                      --------+-----------+-----------+-----------
+                                      XH      |         4 |        80 |         84
+                                              |      3.97 |     80.03 |           
+                                              |      1.57 |     31.50 |      33.07
+                                              |      4.76 |     95.24 |           
+                                              |     33.33 |     33.06 |           
+                                      --------+-----------+-----------+-----------
+                                      XL      |         3 |        81 |         84
+                                              |      3.97 |     80.03 |           
+                                              |      1.18 |     31.89 |      33.07
+                                              |      3.57 |     96.43 |           
+                                              |     25.00 |     33.47 |           
+                                      --------+-----------+-----------+-----------
+                                      Total   |        12 |       242 |        254
+                                              |      4.72 |     95.28 |     100.00
+
+                                        Statistics for Table of TRT by DURDISCD
+
+                                 Statistic                     DF       Value      Prob
+                                 ------------------------------------------------------
+                                 Chi-Square                     2      0.4752    0.7885
+                                 Likelihood Ratio Chi-Square    2      0.4822    0.7858
+                                 Mantel-Haenszel Chi-Square     1      0.4727    0.4918
+                                 Phi Coefficient                       0.0433
+                                 Contingency Coefficient               0.0432
+                                 Cramer's V                            0.0433
+
+            WARNING: 50% of the cells have expected counts less than 5. Chi-Square may not be a valid test.
+
+                                                   The FREQ Procedure
+
+                                                 Table of TRT by RACEN
+
+                                TRT      RACEN
+
+                                Frequency
+                                Expected
+                                Percent
+                                Row Pct
+                                Col Pct
+
+                                TRT     |         1 |         2 |         6 |      Total
+                                --------+-----------+-----------+-----------+-----------
+                                Placebo |        78 |         8 |         0 |         86
+                                        |     77.87 |      7.79 |      0.34 |           
+                                        |     30.71 |      3.15 |      0.00 |      33.86
+                                        |     90.70 |      9.30 |      0.00 |           
+                                        |     33.91 |     34.78 |      0.00 |           
+                                --------+-----------+-----------+-----------+-----------
+                                XH      |        74 |         9 |         1 |         84
+                                        |     76.06 |      7.61 |      0.33 |           
+                                        |     29.13 |      3.54 |      0.39 |      33.07
+                                        |     88.10 |     10.71 |      1.19 |           
+                                        |     32.17 |     39.13 |    100.00 |           
+                                --------+-----------+-----------+-----------+-----------
+                                XL      |        78 |         6 |         0 |         84
+                                        |     76.06 |      7.61 |      0.33 |           
+                                        |     30.71 |      2.36 |      0.00 |      33.07
+                                        |     92.86 |      7.14 |      0.00 |           
+                                        |     33.91 |     26.09 |      0.00 |           
+                                --------+-----------+-----------+-----------+-----------
+                                Total   |       230 |        23 |         1 |        254
+                                        |     90.55 |      9.06 |      0.39 |     100.00
+
+                                          Statistics for Table of TRT by RACEN
+
+                                 Statistic                     DF       Value      Prob
+                                 ------------------------------------------------------
+                                 Chi-Square                     4      2.7297    0.6040
+                                 Likelihood Ratio Chi-Square    4      2.9314    0.5694
+                                 Mantel-Haenszel Chi-Square     1      0.1049    0.7460
+                                 Phi Coefficient                       0.1037
+                                 Contingency Coefficient               0.1031
+                                 Cramer's V                            0.0733
+
+            WARNING: 33% of the cells have expected counts less than 5. Chi-Square may not be a valid test.
+
+                                                   The FREQ Procedure
+
+                                                  Table of TRT by SEXN
+
+                                      TRT      SEXN
+
+                                      Frequency
+                                      Expected
+                                      Percent
+                                      Row Pct
+                                      Col Pct
+
+                                      TRT     |         1 |         2 |      Total
+                                      --------+-----------+-----------+-----------
+                                      Placebo |        33 |        53 |         86
+                                              |     37.58 |     48.42 |           
+                                              |     12.99 |     20.87 |      33.86
+                                              |     38.37 |     61.63 |           
+                                              |     29.73 |     37.06 |           
+                                      --------+-----------+-----------+-----------
+                                      XH      |        44 |        40 |         84
+                                              |     36.71 |     47.29 |           
+                                              |     17.32 |     15.75 |      33.07
+                                              |     52.38 |     47.62 |           
+                                              |     39.64 |     27.97 |           
+                                      --------+-----------+-----------+-----------
+                                      XL      |        34 |        50 |         84
+                                              |     36.71 |     47.29 |           
+                                              |     13.39 |     19.69 |      33.07
+                                              |     40.48 |     59.52 |           
+                                              |     30.63 |     34.97 |           
+                                      --------+-----------+-----------+-----------
+                                      Total   |       111 |       143 |        254
+                                              |     43.70 |     56.30 |     100.00
+
+                                          Statistics for Table of TRT by SEXN
+
+                                 Statistic                     DF       Value      Prob
+                                 ------------------------------------------------------
+                                 Chi-Square                     2      3.9200    0.1409
+                                 Likelihood Ratio Chi-Square    2      3.9087    0.1417
+                                 Mantel-Haenszel Chi-Square     1      0.0836    0.7724
+                                 Phi Coefficient                       0.1242
+                                 Contingency Coefficient               0.1233
+                                 Cramer's V                            0.1242
+
+                                                   The FREQ Procedure
+
+                                                                 Cumulative    Cumulative
+                            TRT        Frequency    Percent     Frequency      Percent
+                            ----------------------------------------------------------------
+                            Placebo           86     33.86           86        33.86
+                            XH                84     33.07          170        66.93
+                            XL                84     33.07          254       100.00
+
+                                                    Chi-Square Test
+                                                 for Equal Proportions
+
+                                      Chi-Square                           0.0315
+                                      DF                                        2
+                                      Pr > ChiSq                           0.9844
+
+                                               Obs    FRO           PVAL
+
+                                                1     AGEGR1N     0.1439
+                                                2     BMICD       0.2235
+                                                3     DURDISCD    0.7885
+                                                4     RACEN       0.6040
+                                                5     SEXN        0.1409
+
+                                              Obs    FRO             PVAL
+
+                                                1    AGEGR1N      0.14390
+                                                2    BMICD        0.22350
+                                                3    DURDISCD     0.78850
+                                                4    RACEN        0.60400
+                                                5    SEXN         0.14090
+                                                6    AGE          0.59344
+                                                7    BMIBL        0.01332
+                                                8    DURDIS       0.15296
+                                                9    EDUCLVL      0.38751
+                                               10    HEIGHTBL     0.12622
+                                               11    MMSETOT      0.59466
+                                               12    WEIGHTBL     0.00304
+
+  Obs    QUESTION                                                                                           ALL
+
+    1    AGE      @Page @01 @Order @110 @AGE (y)              @N               @N            @UNIVARIATE      254
+    2    AGE      @Page @01 @Order @120 @AGE (y)              @Mean(SD)        @Mean StdDev  @UNIVARIATE    75(8.2)
+    3    AGE      @Page @01 @Order @130 @AGE (y)              @Median          @Median       @UNIVARIATE       77
+    4    AGE      @Page @01 @Order @140 @AGE (y)              @Min, Max        @Min Max      @UNIVARIATE    51, 89
+    5    AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT          144(57%)
+    6    AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT          33(13%)
+    7    AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT          77(30%)
+    8    BMIBL    @Page @03 @Order @210 @Baseline BMI         @N               @N            @UNIVARIATE      253
+    9    BMIBL    @Page @03 @Order @220 @Baseline BMI         @Mean(SD)        @Mean StdDev  @UNIVARIATE    25(4.1)
+   10    BMIBL    @Page @03 @Order @230 @Baseline BMI         @Median          @Median       @UNIVARIATE       24
+   11    BMIBL    @Page @03 @Order @240 @Baseline BMI         @Min, Max        @Min Max      @UNIVARIATE    14, 40
+   12    BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT          149(59%)
+   13    BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT          76(30%)
+   14    BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT          28(11%)
+   15    DURDIS   @Page @02 @Order @110 @Duration of disease  @N               @N            @UNIVARIATE      254
+   16    DURDIS   @Page @02 @Order @120 @Duration of disease  @Mean(SD)        @Mean StdDev  @UNIVARIATE    44(28.4)
+   17    DURDIS   @Page @02 @Order @130 @Duration of disease  @Median          @Median       @UNIVARIATE       36
+   18    DURDIS   @Page @02 @Order @140 @Duration of disease  @Min, Max        @Min Max      @UNIVARIATE    2, 183
+   19    DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT          12(5%)
+   20    DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT          242(95%)
+   21    EDUCLVL  @Page @02 @Order @210 @Years of Education   @N               @N            @UNIVARIATE      254
+   22    EDUCLVL  @Page @02 @Order @220 @Years of Education   @Mean(SD)        @Mean StdDev  @UNIVARIATE    13(3.4)
+   23    EDUCLVL  @Page @02 @Order @230 @Years of Education   @Median          @Median       @UNIVARIATE       12
+   24    EDUCLVL  @Page @02 @Order @240 @Years of Education   @Min, Max        @Min Max      @UNIVARIATE    3, 24
+   25    HEIGHTBL @Page @03 @Order @110 @Baseline height(cm)  @N               @N            @UNIVARIATE      254
+   26    HEIGHTBL @Page @03 @Order @120 @Baseline height(cm)  @Mean(SD)        @Mean StdDev  @UNIVARIATE    164(10.8)
+   27    HEIGHTBL @Page @03 @Order @130 @Baseline height(cm)  @Median          @Median       @UNIVARIATE      163
+   28    HEIGHTBL @Page @03 @Order @140 @Baseline height(cm)  @Min, Max        @Min Max      @UNIVARIATE    136, 196
+   29    MMSETOT  @Page @01 @Order @510 @MMSE                 @N               @N            @UNIVARIATE      254
+   30    MMSETOT  @Page @01 @Order @520 @MMSE                 @Mean(SD)        @Mean StdDev  @UNIVARIATE    18(4.2)
+   31    MMSETOT  @Page @01 @Order @530 @MMSE                 @Median          @Median       @UNIVARIATE       19
+   32    MMSETOT  @Page @01 @Order @540 @MMSE                 @Min, Max        @Min Max      @UNIVARIATE    10, 24
+   33    RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT          0(0%)
+   34    RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT          230(91%)
+   35    RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT          23(9%)
+   36    RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT          1(0%)
+   37    SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT          0(0%)
+   38    SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT          111(44%)
+   39    SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT          143(56%)
+   40    WEIGHTBL @Page @02 @Order @310 @Baseline weight(kg)  @N               @N            @UNIVARIATE      253
+   41    WEIGHTBL @Page @02 @Order @320 @Baseline weight(kg)  @Mean(SD)        @Mean StdDev  @UNIVARIATE    67(14.1)
+   42    WEIGHTBL @Page @02 @Order @330 @Baseline weight(kg)  @Median          @Median       @UNIVARIATE       67
+   43    WEIGHTBL @Page @02 @Order @340 @Baseline weight(kg)  @Min, Max        @Min Max      @UNIVARIATE    34, 108
+
+  Obs    PLACEBO      XH           XL               PVAL
+
+    1       86           84           84         0.59344
+    2    75(8.6)      74(7.9)      76(8.3)       0.59344
+    3       76           76           78         0.59344
+    4    52, 89       56, 88       51, 88        0.59344
+    5    42(49%)      55(65%)      47(56%)       0.14390
+    6    14(16%)      11(13%)      8(10%)        0.14390
+    7    30(35%)      18(21%)      29(35%)       0.14390
+    8       86           84           83         0.01332
+    9    24(3.7)      25(4.2)      25(4.3)       0.01332
+   10       23           25           24         0.01332
+   11    15, 33       14, 35       18, 40        0.01332
+   12    59(69%)      44(52%)      46(55%)       0.22350
+   13    21(24%)      28(33%)      27(33%)       0.22350
+   14    6(7%)        12(14%)      10(12%)       0.22350
+   15       86           84           84         0.15296
+   16    43(30.2)     41(24.7)     49(29.6)      0.15296
+   17       35           36           40         0.15296
+   18    7, 183       2, 135       8, 131        0.15296
+   19    5(6%)        4(5%)        3(4%)         0.78850
+   20    81(94%)      80(95%)      81(96%)       0.78850
+   21       86           84           84         0.38751
+   22    13(2.9)      13(2.9)      13(4.1)       0.38751
+   23       12           12           12         0.38751
+   24    6, 21        6, 20        3, 24         0.38751
+   25       86           84           84         0.12622
+   26    163(11.5)    166(10.1)    163(10.4)     0.12622
+   27      163          165          163         0.12622
+   28    137, 185     146, 191     136, 196      0.12622
+   29       86           84           84         0.59466
+   30    18(4.3)      19(4.2)      18(4.2)       0.59466
+   31       20           20           18         0.59466
+   32    10, 23       10, 24       10, 24        0.59466
+   33    0(0%)        0(0%)        0(0%)         0.60400
+   34    78(91%)      74(88%)      78(93%)       0.60400
+   35    8(9%)        9(11%)       6(7%)         0.60400
+   36    0(0%)        1(1%)        0(0%)         0.60400
+   37    0(0%)        0(0%)        0(0%)         0.14090
+   38    33(38%)      44(52%)      34(40%)       0.14090
+   39    53(62%)      40(48%)      50(60%)       0.14090
+   40       86           84           83         0.00304
+   41    63(12.8)     70(14.7)     67(14.1)      0.00304
+   42       61           69           65         0.00304
+   43    34, 86       42, 108      45, 106       0.00304
+
+ Obs   PGE   ODR   MJR                     MNR                PLACEBO     XL          XH          ALL             PVAL
+
+   1    1    110   AGE (y)                 N                     86          84          84         254        0.59344
+   2    1    120   AGE (y)                 Mean(SD)           75(8.6)     76(8.3)     74(7.9)     75(8.2)      0.59344
+   3    1    130   AGE (y)                 Median                76          78          76          77        0.59344
+   4    1    140   AGE (y)                 Min, Max           52, 89      51, 88      56, 88      51, 89       0.59344
+   5    1    210   AGE (y)                 <65 yrs            42(49%)     47(56%)     55(65%)     144(57%)     0.14390
+   6    1    220   AGE (y)                 65-80 yrs          14(16%)     8(10%)      11(13%)     33(13%)      0.14390
+   7    1    230   AGE (y)                 >80                30(35%)     29(35%)     18(21%)     77(30%)      0.14390
+   8    1    300   Sex                     N                  0(0%)       0(0%)       0(0%)       0(0%)        0.14090
+   9    1    310   Sex                     Male               33(38%)     34(40%)     44(52%)     111(44%)     0.14090
+  10    1    320   Sex                     Female             53(62%)     50(60%)     40(48%)     143(56%)     0.14090
+  11    1    400   Race (Origin)           N                  0(0%)       0(0%)       0(0%)       0(0%)        0.60400
+  12    1    410   Race (Origin)           Cacasian           78(91%)     78(93%)     74(88%)     230(91%)     0.60400
+  13    1    420   Race (Origin)           African Descent    8(9%)       6(7%)       9(11%)      23(9%)       0.60400
+  14    1    430   Race (Origin)           Hispanic           0(0%)       0(0%)       1(1%)       1(0%)        0.60400
+  15    1    510   MMSE                    N                     86          84          84         254        0.59466
+  16    1    520   MMSE                    Mean(SD)           18(4.3)     18(4.2)     19(4.2)     18(4.2)      0.59466
+  17    1    530   MMSE                    Median                20          18          20          19        0.59466
+  18    1    540   MMSE                    Min, Max           10, 23      10, 24      10, 24      10, 24       0.59466
+  19    2    110   Duration of disease     N                     86          84          84         254        0.15296
+  20    2    120   Duration of disease     Mean(SD)           43(30.2)    49(29.6)    41(24.7)    44(28.4)     0.15296
+  21    2    130   Duration of disease     Median                35          40          36          36        0.15296
+  22    2    140   Duration of disease     Min, Max           7, 183      8, 131      2, 135      2, 183       0.15296
+  23    2    150   Duration of disease     <12 MONTHS         5(6%)       3(4%)       4(5%)       12(5%)       0.78850
+  24    2    160   Duration of disease     >=12 MONTHS        81(94%)     81(96%)     80(95%)     242(95%)     0.78850
+  25    2    210   Years of Education      N                     86          84          84         254        0.38751
+  26    2    220   Years of Education      Mean(SD)           13(2.9)     13(4.1)     13(2.9)     13(3.4)      0.38751
+  27    2    230   Years of Education      Median                12          12          12          12        0.38751
+  28    2    240   Years of Education      Min, Max           6, 21       3, 24       6, 20       3, 24        0.38751
+  29    2    310   Baseline weight(kg)     N                     86          83          84         253        0.00304
+  30    2    320   Baseline weight(kg)     Mean(SD)           63(12.8)    67(14.1)    70(14.7)    67(14.1)     0.00304
+  31    2    330   Baseline weight(kg)     Median                61          65          69          67        0.00304
+  32    2    340   Baseline weight(kg)     Min, Max           34, 86      45, 106     42, 108     34, 108      0.00304
+  33    3    110   Baseline height(cm)     N                     86          84          84         254        0.12622
+  34    3    120   Baseline height(cm)     Mean(SD)           163(11.5)   163(10.4)   166(10.1)   164(10.8)    0.12622
+  35    3    130   Baseline height(cm)     Median               163         163         165         163        0.12622
+  36    3    140   Baseline height(cm)     Min, Max           137, 185    136, 196    146, 191    136, 196     0.12622
+  37    3    210   Baseline BMI            N                     86          83          84         253        0.01332
+  38    3    220   Baseline BMI            Mean(SD)           24(3.7)     25(4.3)     25(4.2)     25(4.1)      0.01332
+  39    3    230   Baseline BMI            Median                23          24          25          24        0.01332
+  40    3    240   Baseline BMI            Min, Max           15, 33      18, 40      14, 35      14, 40       0.01332
+  41    3    310   Baseline BMI            <25                59(69%)     46(55%)     44(52%)     149(59%)     0.22350
+  42    3    320   Baseline BMI            25-30              21(24%)     27(33%)     28(33%)     76(30%)      0.22350
+  43    3    330   Baseline BMI            >=30               6(7%)       10(12%)     12(14%)     28(11%)      0.22350
+
+                                 Obs    ODR    _NAME_        PLACEBO    XH    XL    ALL
+
+                                  1     300    CNT_NOMISS       86      84    84    254
+                                  2     400    CNT_NOMISS       86      84    84    254
+
+ Obs   PGE   ODR   MJR                     MNR                PLACEBO     XL          XH          ALL             PVAL
+
+   1    1    110   AGE (y)                 N                     86          84          84         254        0.59344
+   2    1    120   AGE (y)                 Mean(SD)           75(8.6)     76(8.3)     74(7.9)     75(8.2)      0.59344
+   3    1    130   AGE (y)                 Median                76          78          76          77        0.59344
+   4    1    140   AGE (y)                 Min, Max           52, 89      51, 88      56, 88      51, 89       0.59344
+   5    1    210   AGE (y)                 <65 yrs            42(49%)     47(56%)     55(65%)     144(57%)     0.14390
+   6    1    220   AGE (y)                 65-80 yrs          14(16%)     8(10%)      11(13%)     33(13%)      0.14390
+   7    1    230   AGE (y)                 >80                30(35%)     29(35%)     18(21%)     77(30%)      0.14390
+   8    1    300   Sex                     N                  86          84          84          254          0.14090
+   9    1    310   Sex                     Male               33(38%)     34(40%)     44(52%)     111(44%)     0.14090
+  10    1    320   Sex                     Female             53(62%)     50(60%)     40(48%)     143(56%)     0.14090
+  11    1    400   Race (Origin)           N                  86          84          84          254          0.60400
+  12    1    410   Race (Origin)           Cacasian           78(91%)     78(93%)     74(88%)     230(91%)     0.60400
+  13    1    420   Race (Origin)           African Descent    8(9%)       6(7%)       9(11%)      23(9%)       0.60400
+  14    1    430   Race (Origin)           Hispanic           0(0%)       0(0%)       1(1%)       1(0%)        0.60400
+  15    1    510   MMSE                    N                     86          84          84         254        0.59466
+  16    1    520   MMSE                    Mean(SD)           18(4.3)     18(4.2)     19(4.2)     18(4.2)      0.59466
+  17    1    530   MMSE                    Median                20          18          20          19        0.59466
+  18    1    540   MMSE                    Min, Max           10, 23      10, 24      10, 24      10, 24       0.59466
+  19    2    110   Duration of disease     N                     86          84          84         254        0.15296
+  20    2    120   Duration of disease     Mean(SD)           43(30.2)    49(29.6)    41(24.7)    44(28.4)     0.15296
+  21    2    130   Duration of disease     Median                35          40          36          36        0.15296
+  22    2    140   Duration of disease     Min, Max           7, 183      8, 131      2, 135      2, 183       0.15296
+  23    2    150   Duration of disease     <12 MONTHS         5(6%)       3(4%)       4(5%)       12(5%)       0.78850
+  24    2    160   Duration of disease     >=12 MONTHS        81(94%)     81(96%)     80(95%)     242(95%)     0.78850
+  25    2    210   Years of Education      N                     86          84          84         254        0.38751
+  26    2    220   Years of Education      Mean(SD)           13(2.9)     13(4.1)     13(2.9)     13(3.4)      0.38751
+  27    2    230   Years of Education      Median                12          12          12          12        0.38751
+  28    2    240   Years of Education      Min, Max           6, 21       3, 24       6, 20       3, 24        0.38751
+  29    2    310   Baseline weight(kg)     N                     86          83          84         253        0.00304
+  30    2    320   Baseline weight(kg)     Mean(SD)           63(12.8)    67(14.1)    70(14.7)    67(14.1)     0.00304
+  31    2    330   Baseline weight(kg)     Median                61          65          69          67        0.00304
+  32    2    340   Baseline weight(kg)     Min, Max           34, 86      45, 106     42, 108     34, 108      0.00304
+  33    3    110   Baseline height(cm)     N                     86          84          84         254        0.12622
+  34    3    120   Baseline height(cm)     Mean(SD)           163(11.5)   163(10.4)   166(10.1)   164(10.8)    0.12622
+  35    3    130   Baseline height(cm)     Median               163         163         165         163        0.12622
+  36    3    140   Baseline height(cm)     Min, Max           137, 185    136, 196    146, 191    136, 196     0.12622
+  37    3    210   Baseline BMI            N                     86          83          84         253        0.01332
+  38    3    220   Baseline BMI            Mean(SD)           24(3.7)     25(4.3)     25(4.2)     25(4.1)      0.01332
+  39    3    230   Baseline BMI            Median                23          24          25          24        0.01332
+  40    3    240   Baseline BMI            Min, Max           15, 33      18, 40      14, 35      14, 40       0.01332
+  41    3    310   Baseline BMI            <25                59(69%)     46(55%)     44(52%)     149(59%)     0.22350
+  42    3    320   Baseline BMI            25-30              21(24%)     27(33%)     28(33%)     76(30%)      0.22350
+  43    3    330   Baseline BMI            >=30               6(7%)       10(12%)     12(14%)     28(11%)      0.22350
+
+   Obs   MJR                   PGE   ODR   MNR                PLACEBO     XL          XH          ALL         PVALUE
+
+     1   AGE (y)                1    110   N                     86          84          84         254       0.5934
+     2   AGE (y)                1    120   Mean(SD)           75(8.6)     76(8.3)     74(7.9)     75(8.2)
+     3   AGE (y)                1    130   Median                76          78          76          77
+     4   AGE (y)                1    140   Min, Max           52, 89      51, 88      56, 88      51, 89
+     5   AGE (y)                1    140
+     6   AGE (y)                1    210   <65 yrs            42(49%)     47(56%)     55(65%)     144(57%)    0.1439
+     7   AGE (y)                1    220   65-80 yrs          14(16%)     8(10%)      11(13%)     33(13%)
+     8   AGE (y)                1    230   >80                30(35%)     29(35%)     18(21%)     77(30%)
+     9   Sex                    1    300   N                  86          84          84          254         0.1409
+    10   Sex                    1    310   Male               33(38%)     34(40%)     44(52%)     111(44%)
+    11   Sex                    1    320   Female             53(62%)     50(60%)     40(48%)     143(56%)
+    12   Race (Origin)          1    400   N                  86          84          84          254         0.6040
+    13   Race (Origin)          1    410   Cacasian           78(91%)     78(93%)     74(88%)     230(91%)
+    14   Race (Origin)          1    420   African Descent    8(9%)       6(7%)       9(11%)      23(9%)
+    15   Race (Origin)          1    430   Hispanic           0(0%)       0(0%)       1(1%)       1(0%)
+    16   MMSE                   1    510   N                     86          84          84         254       0.5947
+    17   MMSE                   1    520   Mean(SD)           18(4.3)     18(4.2)     19(4.2)     18(4.2)
+    18   MMSE                   1    530   Median                20          18          20          19
+    19   MMSE                   1    540   Min, Max           10, 23      10, 24      10, 24      10, 24
+    20   Duration of disease    2    110   N                     86          84          84         254       0.1530
+    21   Duration of disease    2    120   Mean(SD)           43(30.2)    49(29.6)    41(24.7)    44(28.4)
+    22   Duration of disease    2    130   Median                35          40          36          36
+    23   Duration of disease    2    140   Min, Max           7, 183      8, 131      2, 135      2, 183
+    24   Duration of disease    2    140
+    25   Duration of disease    2    150   <12 MONTHS         5(6%)       3(4%)       4(5%)       12(5%)      0.7885
+    26   Duration of disease    2    160   >=12 MONTHS        81(94%)     81(96%)     80(95%)     242(95%)
+    27   Years of Education     2    210   N                     86          84          84         254       0.3875
+    28   Years of Education     2    220   Mean(SD)           13(2.9)     13(4.1)     13(2.9)     13(3.4)
+    29   Years of Education     2    230   Median                12          12          12          12
+    30   Years of Education     2    240   Min, Max           6, 21       3, 24       6, 20       3, 24
+    31   Baseline weight(kg)    2    310   N                     86          83          84         253       0.0030
+    32   Baseline weight(kg)    2    320   Mean(SD)           63(12.8)    67(14.1)    70(14.7)    67(14.1)
+    33   Baseline weight(kg)    2    330   Median                61          65          69          67
+    34   Baseline weight(kg)    2    340   Min, Max           34, 86      45, 106     42, 108     34, 108
+    35   Baseline height(cm)    3    110   N                     86          84          84         254       0.1262
+    36   Baseline height(cm)    3    120   Mean(SD)           163(11.5)   163(10.4)   166(10.1)   164(10.8)
+    37   Baseline height(cm)    3    130   Median               163         163         165         163
+    38   Baseline height(cm)    3    140   Min, Max           137, 185    136, 196    146, 191    136, 196
+    39   Baseline BMI           3    210   N                     86          83          84         253       0.0133
+    40   Baseline BMI           3    220   Mean(SD)           24(3.7)     25(4.3)     25(4.2)     25(4.1)
+    41   Baseline BMI           3    230   Median                23          24          25          24
+    42   Baseline BMI           3    240   Min, Max           15, 33      18, 40      14, 35      14, 40
+    43   Baseline BMI           3    240
+    44   Baseline BMI           3    310   <25                59(69%)     46(55%)     44(52%)     149(59%)    0.2235
+    45   Baseline BMI           3    320   25-30              21(24%)     27(33%)     28(33%)     76(30%)
+    46   Baseline BMI           3    330   >=30               6(7%)       10(12%)     12(14%)     28(11%)

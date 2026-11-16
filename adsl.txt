@@ -1,0 +1,100 @@
+          Protocol: CDISCPILOT01                                                                  Page 1 of 3
+          Population: Intent-to-Treat                                                                        
+                                                     Table 14-2.01
+                                  Summary of Demographic and Baseline Characteristics
+
+                                                                Xanomeline  Xanomeline
+                                                       Placebo    Low Dose   High Dose     Total  P-Value
+                                                        (N=86)      (N=84)      (N=84)   (N=254)  [1]
+
+               AGE (y)               N                      86          84          84       254  0.5934  
+                                     Mean(SD)          75(8.6)     76(8.3)     74(7.9)   75(8.2)          
+                                     Median                 76          78          76        77          
+                                     Min, Max           52, 89      51, 88      56, 88    51, 89          
+                                                                                                          
+                                     <65 yrs           42(49%)     47(56%)     55(65%)  144(57%)  0.1439  
+                                     65-80 yrs         14(16%)      8(10%)     11(13%)   33(13%)          
+                                     >80               30(35%)     29(35%)     18(21%)   77(30%)          
+
+               Sex                   N                      86          84          84       254  0.1409  
+                                     Male              33(38%)     34(40%)     44(52%)  111(44%)          
+                                     Female            53(62%)     50(60%)     40(48%)  143(56%)          
+
+               Race (Origin)         N                      86          84          84       254  0.6040  
+                                     Cacasian          78(91%)     78(93%)     74(88%)  230(91%)          
+                                     African Descent     8(9%)       6(7%)      9(11%)    23(9%)          
+                                     Hispanic            0(0%)       0(0%)       1(1%)     1(0%)          
+
+               MMSE                  N                      86          84          84       254  0.5947  
+                                     Mean(SD)          18(4.3)     18(4.2)     19(4.2)   18(4.2)          
+                                     Median                 20          18          20        19          
+                                     Min, Max           10, 23      10, 24      10, 24    10, 24
+
+
+          [1] P-values are results of ANOVA treatment group comparison for continuous variable and Pearson's 
+          chi-square test for categorical variables.                                                         
+          NOTE: Duration of disease is computed as months between date of enrollment and date of onset of the
+          first definite symptoms of Alzheimer's disease.                                                    
+          Source: C:\cdisc_pilot\PROGRAMS\DRAFT\TFLs\adsl3.sas                 14:33 Monday, November 16, 2026
+          Protocol: CDISCPILOT01                                                                  Page 2 of 3
+          Population: Intent-to-Treat                                                                        
+                                                     Table 14-2.01
+                                  Summary of Demographic and Baseline Characteristics
+
+                                                                Xanomeline  Xanomeline
+                                                       Placebo    Low Dose   High Dose     Total  P-Value
+                                                        (N=86)      (N=84)      (N=84)   (N=254)  [1]
+
+               Duration of disease   N                      86          84          84       254  0.1530  
+                                     Mean(SD)         43(30.2)    49(29.6)    41(24.7)  44(28.4)          
+                                     Median                 35          40          36        36          
+                                     Min, Max           7, 183      8, 131      2, 135    2, 183          
+                                                                                                          
+                                     <12 MONTHS          5(6%)       3(4%)       4(5%)    12(5%)  0.7885  
+                                     >=12 MONTHS       81(94%)     81(96%)     80(95%)  242(95%)          
+
+               Years of Education    N                      86          84          84       254  0.3875  
+                                     Mean(SD)          13(2.9)     13(4.1)     13(2.9)   13(3.4)          
+                                     Median                 12          12          12        12          
+                                     Min, Max            6, 21       3, 24       6, 20     3, 24          
+
+               Baseline weight(kg)   N                      86          83          84       253  0.0030  
+                                     Mean(SD)         63(12.8)    67(14.1)    70(14.7)  67(14.1)          
+                                     Median                 61          65          69        67          
+                                     Min, Max           34, 86     45, 106     42, 108   34, 108
+
+
+          [1] P-values are results of ANOVA treatment group comparison for continuous variable and Pearson's 
+          chi-square test for categorical variables.                                                         
+          NOTE: Duration of disease is computed as months between date of enrollment and date of onset of the
+          first definite symptoms of Alzheimer's disease.                                                    
+          Source: C:\cdisc_pilot\PROGRAMS\DRAFT\TFLs\adsl3.sas                 14:33 Monday, November 16, 2026
+          Protocol: CDISCPILOT01                                                                  Page 3 of 3
+          Population: Intent-to-Treat                                                                        
+                                                     Table 14-2.01
+                                  Summary of Demographic and Baseline Characteristics
+
+                                                                Xanomeline  Xanomeline
+                                                       Placebo    Low Dose   High Dose     Total  P-Value
+                                                        (N=86)      (N=84)      (N=84)   (N=254)  [1]
+
+               Baseline height(cm)   N                      86          84          84       254  0.1262  
+                                     Mean(SD)         163(11.5   163(10.4)   166(10.1)  164(10.8          
+                                     Median                163         163         165       163          
+                                     Min, Max         137, 185    136, 196    146, 191  136, 196          
+
+               Baseline BMI          N                      86          83          84       253  0.0133  
+                                     Mean(SD)          24(3.7)     25(4.3)     25(4.2)   25(4.1)          
+                                     Median                 23          24          25        24          
+                                     Min, Max           15, 33      18, 40      14, 35    14, 40          
+                                                                                                          
+                                     <25               59(69%)     46(55%)     44(52%)  149(59%)  0.2235  
+                                     25-30             21(24%)     27(33%)     28(33%)   76(30%)          
+                                     >=30                6(7%)     10(12%)     12(14%)   28(11%)
+
+
+          [1] P-values are results of ANOVA treatment group comparison for continuous variable and Pearson's 
+          chi-square test for categorical variables.                                                         
+          NOTE: Duration of disease is computed as months between date of enrollment and date of onset of the
+          first definite symptoms of Alzheimer's disease.                                                    
+          Source: C:\cdisc_pilot\PROGRAMS\DRAFT\TFLs\adsl3.sas                 14:33 Monday, November 16, 2026

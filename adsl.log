@@ -1,0 +1,2044 @@
+NOTE: Copyright (c) 2026 Jenner Analytics Ltd., London, England.
+NOTE: Jenner v1.5.121 (build v1.5.121+b323927f8a.20261116T132558Z)
+      Licensed to Roger DeAngelis, Serial 3BF7B3E6.
+NOTE: Option VALIDVARNAME changed to UPCASE.
+NOTE: Option FORMCHAR changed to |----|+|---+=|-/\<>*.
+NOTE: DATA _null_
+
+autoexec started    16NOV2026:14:33:54
+
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: Library WORKX assigned path=d:/wpswrkx.
+NOTE: Library LIBRARY assigned path=d:/wpswrkx.
+NOTE: DATA WORKX.CLASS
+
+NOTE: Processing inline DATALINES (19 lines)
+
+NOTE: The data set WORKX.CLASS has 19 observations and 5 variables.
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA _null_
+
+LOG:    16NOV2026:14:33:54
+NOTE: DATA _null_ completed. Output written to FILE PRINT
+NOTE: Option SASAUTOS changed to c:/otojnr.
+NOTE: DATA _null_
+
+NOTE: Reading from fileref c:/jnr/runsas_selection.sas (c:/jnr/runsas_selection.sas)
+    1 /*--
+    2 c:/utl/jnr-jenner-analytics-a-general-framework-for-clinical-reporting.sas
+    3 ---*/
+    4 
+    5 /*---
+    6 Some minor formatting issues actively being worked on.
+    7 
+    8 Jenner Analytics general framework for clinical reporting
+    9 
+   10 Reproducing  the R Intent to Treat Table
+   11 https://tinyurl.com/bdzhvkkp
+   12 
+   13 CONTENTS
+   14 ---------
+   15   1   ADam ADaM ADSL Input Table
+   16       https://tinyurl.com/25zr7ent
+   17   2   R Intent-to-Treat table-Table-14-1-02-using-ADaM-datasets
+   18       https://tinyurl.com/bdzhvkkp
+   19   3   MOCK Table (just first of three pages)
+   20       We will map the mock table to a Jenner format
+   21   4   Jenner Program
+   22   5   Output Intent to Treat Table 14-2.01
+   23       I Decided not to move the footnotes to the boo
+   24   6   Table 14-2.01 in Microsoft Word Format
+   25       I set two Word defaults, landscape and narrow margins(.5in)
+   26       If you see blue and red underlines turn proofing off
+   27   7   Table 14-2.01 in PDF Format
+   28   8   Macros powershell sandwich and utlfkil
+   29 ---*/
+   30 
+   31 /**************************************************************************************************************************/
+   32 /* 1 ADam ADaM ADSL Input Table [ADam ADSL] https://tinyurl.com/25zr7ent                                                  */
+   33 /**************************************************************************************************************************/
+   34 
+   35 libname  adam    "d:/adam";
+   36 %contentsx(libname=adam,memname=adsl);
+   37 
+   38 /*---
+   39 LIST:   14NOV2026:13:40:22
+   40 Data Set Name: d:/adam\adsl.parquet
+   41 Observations:  254
+   42 Variables:     4
+   43 Variables (in alphabetical order):
+   44   #  Variable  Type    Len      #  Variable  Type    Len    #  Variable  Type    Len
+   45 --------------------------     -------------------------   -------------------------
+   46  16  AGE        Num      8     32  DTHFL     Char      8    4  SITEID    Char      8
+   47  17  AGEGR1    Char      8     39  DURDIS     Num      8    1  STUDYID   Char     12
+   48  18  AGEGR1N    Num      8     40  DURDSGR1  Char      8    3  SUBJID    Char      8
+   49  19  AGEU      Char      8     37  EDUCLVL    Num      8    9  TRT01A    Char     20
+   50   6  ARM       Char     20     26  EFFFL     Char      8   10  TRT01AN    Num      8
+   51  14  AVGDD      Num      8     23  ETHNIC    Char     22    7  TRT01P    Char     20
+   52  33  BMIBL      Num      8     35  HEIGHTBL   Num      8    8  TRT01PN    Num      8
+   53  34  BMIBLGR1  Char      8     25  ITTFL     Char      8   13  TRTDUR     Num      8
+   54  28  COMP16FL  Char      8     48  MMSETOT    Num      8   12  TRTEDT     Num      8  DATE9.
+   55  29  COMP24FL  Char      8     20  RACE      Char     32   11  TRTSDT     Num      8  DATE9.
+   56  27  COMP8FL   Char      8     21  RACEN      Num      8    2  USUBJID   Char     11
+   57  15  CUMDOSE    Num      8     45  RFENDT     Num      8.  41  VISIT1DT   Num      8  DATE9.
+   58  46  DCDECOD   Char     27     43  RFENDTC   Char     10
+   59  47  DCREASCD  Char     18     42  RFSTDTC   Char     10
+   60  30  DISCONFL  Char      8     24  SAFFL     Char      8
+   61  38  DISONSDT   Num      8     22  SEX       Char      8
+   62  31  DSRAEFL   Char      8      5  SITEGR1   Char      8
+   63 ---*
+   64 
+   65 /**************************************************************************************************************************/
+   66 /* 2 R Intent-to-Treat table-Table-14-1-02-using-ADaM-datasets  [R ITT Table] https://tinyurl.com/bdzhvkkp                */
+   67 /**************************************************************************************************************************/
+   68 
+   69 /*---
+   70 R Intent-to-Treat table-Table-14-1-02-using-ADaM-datasets
+   71 https://tinyurl.com/bdzhvkkp
+   72 ---*/
+   73 
+   74 /**************************************************************************************************************************/
+   75 /* 3 MOCK Table (just first of three pages)                                                                               */
+   76 /**************************************************************************************************************************/
+   77 
+   78 /*---
+   79  MOCK TABLE
+   80 
+   81     Protocol: CDISCPILOT01                                                                  Page1 of 3
+   82     Population: Intent-to-Treat
+   83                                                Table 14-2.01
+   84                         Summary of Demographic and Baseline Characteristics
+   85 
+   86                                                        Xanomeline  Xanomeline
+   87                                               Placebo    Low Dose    Low Dose     Total  P-Value
+   88                                                (N=XX)      (N=XX)      (N=XX)   (N=XXX)  [X]
+   89 
+   90        AGE (y)               N                     XX          XX          XX       XXX  X.XXXX
+   91                              Mean(SD)         XX(X.X)     XX(X.X)     XX(X.X)   XX(X.X)
+   92                              Median                XX          XX          XX        XX
+   93                              Min, Max          XX, XX      XX, XX      XX, XX    XX, XX
+   94 
+   95                              <XX yrs          XX(XX%)     XX(XX%)     XX(XX%)  XXX(XX%)  X.XXXX
+   96                              65-80            XX(XX%)      X(XX%)      X(XX%)   XX(XX%)
+   97                              >XX              XX(XX%)     XX(XX%)     XX(XX%)   XX(XX%)
+   98 
+   99        Sex                   N                     XX          XX          XX       XXX  X.XXXX
+  100                              Male             XX(XX%)     XX(XX%)     XX(XX%)  XXX(XX%)
+  101                              Female           XX(XX%)     XX(XX%)     XX(XX%)  XXX(XX%)
+  102 
+  103        Race (Origin)         N                     XX          XX          XX       XXX  X.XXXX
+  104                              Cacasian         XX(XX%)     XX(XX%)     XX(XX%)  XXX(XX%)
+  105                              African Descen     X(X%)       X(X%)       X(X%)    XX(X%)
+  106                              Hispanic           X(X%)       X(X%)       X(X%)     X(X%)
+  107 
+  108        MMSE                  N                     XX          XX          XX       XXX  X.XXXX
+  109                              Mean(SD)         XX(X.X)     XX(X.X)     XX(X.X)   XX(X.X)
+  110                              Median                XX          XX          XX        XX
+  111                              Min, Max          XX, XX      XX, XX      XX, XX    XX, XX
+  112 
+  113 
+  114     [1] P-values are results of ANOVA treatment group comparison for continuous variable and Pearson's
+  115     chi-square test for categorical variables.
+  116     NOTE: Duration of disease is computed as months between date of enrollment and date of onset of the
+  117     first definite symptoms of Alzheimer's disease.
+  118     Source: C:\cdisc_pilot\PROGRAMS\DRAFT\TFLs\adsl3.sas                12:13 Friday, November 13, 2026
+  119 
+  120  ---*/
+  121 
+  122 /**************************************************************************************************************************/
+  123 /* 4 Jenner Program                                                                                                       */
+  124 /**************************************************************************************************************************/
+  125 
+  126 libname  adam    "d:/adam";
+  127 libname  workx   "d:/wpswrkx";    /*--- put this in your autoexec ---*/
+  128 libname  library "d:/wpswrkx";    /*--- put this in your autoexec ---*/
+  129 
+  130 proc datasets lib=workx kill;
+  131 run;
+  132 
+  133 proc copy in=adam out=workx;
+  134  select adsl;
+  135 run;
+  136 
+  137 /*--- SUBSET AND ADD CODES ---*/
+  138 options validvarname=upcase;
+  139 data workx.adsl12;
+  140    retain trt;
+  141    set workx.adsl(
+  142      keep=
+  143        usubjid
+  144        TRT01A
+  145        RACEN
+  146        AGE
+  147        sex
+  148        AGEGR1N
+  149        MMSETOT
+  150        EDUCLVL
+  151        DURDIS
+  152        WEIGHTBL
+  153        HEIGHTBL
+  154        BMIBL
+  155        );
+  156        select;
+  157           when(0<durdis<12)  durdiscd=1;
+  158           when(durdis=>12)   durdiscd=2;
+  159          otherwise;
+  160        end;
+  161        select;
+  162           when(0<bmibl <25)   bmicd=1;
+  163           when(25<=bmibl <30) bmicd=2;
+  164           when(bmibl =>30)    bmicd=3;
+  165          otherwise;
+  166        end;
+  167        select (TRT01A);
+  168          when ("Xanomeline High Dose") trt="XH";
+  169          when ("Xanomeline Low Dose" ) trt="XL";
+  170          when ("Placebo"             ) trt="Placebo";
+  171          otherwise;
+  172        end;
+  173        if sex="M" then sexn=1;
+  174       else if sex="F" then sexn=2;
+  175     drop TRT01A sex;
+  176 run;
+  177 
+  178 proc print data=workx.adsl12(obs=10) width=min;
+  179 run;
+  180 
+  181 /*---
+  182 workx.adsl12
+  183 LIST:   13NOV2026:12:34:20
+  184   Obs  TRT      USUBJID      AGE  AGEGR1N  RACEN  BMIBL  HEIGHTBL  WEIGHTBL  EDUCLVL  DURDIS  MMSETOT  DURDISCD  BMICD SEXN
+  185     1  Placebo  01-701-1015   63        1      1   25.1     147.3      54.4       16    43.9       23         2      2   2
+  186     2  Placebo  01-701-1023   64        1      1   30.4     162.6      80.3       14    76.4       23         2      3   1
+  187     3  XH       01-701-1028   71        2      1   31.4     177.8      99.3       16    42.8       23         2      3   1
+  188     4  XL       01-701-1033   74        2      1   28.8     175.3      88.5       12    55.3       23         2      2   1
+  189 ---*/
+  190 
+  191 proc format lib=library;
+  192 /*--- PAGE 1 ---*/
+  193   value age
+  194     /*-   Major    Page Line             Major                 Minor            Staistic      Process ---*/
+  195     /*-            2     3   4      5    6                     7                8             9        --*/
+  196     1  = "AGE      @Page @01 @Order @110 @AGE (y)              @N               @N            @UNIVARIATE"
+  197     2  = "AGE      @Page @01 @Order @120 @AGE (y)              @Mean(SD)        @Mean StdDev  @UNIVARIATE"
+  198     3  = "AGE      @Page @01 @Order @130 @AGE (y)              @Median          @Median       @UNIVARIATE"
+  199     4  = "AGE      @Page @01 @Order @140 @AGE (y)              @Min, Max        @Min Max      @UNIVARIATE";
+  200   value AGEGR1N
+  201     2  = "AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT"
+  202     1  = "AGEGR1N  @Page @01 @Order @220 @AGE (y)              @65-80 yrs       @NPCT         @NPCT"
+  203     3  = "AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT";
+  204   value SEXN
+  205      0  ="SEXN     @Page @01 @Order @300 @Sex                  @N               @NPCT         @NPCT"
+  206      1  ="SEXN     @Page @01 @Order @310 @Sex                  @Male            @NPCT         @NPCT"
+  207      2 = "SEXN     @Page @01 @Order @320 @Sex                  @Female          @NPCT         @NPCT";
+  208   value RACEN
+  209      0 = "RACEN    @Page @01 @Order @400 @Race (Origin)        @N               @NPCT         @NPCT"
+  210      1 = "RACEN    @Page @01 @Order @410 @Race (Origin)        @Cacasian        @NPCT         @NPCT"
+  211      2 = "RACEN    @Page @01 @Order @420 @Race (Origin)        @African Descent @NPCT         @NPCT"
+  212      6 = "RACEN    @Page @01 @Order @430 @Race (Origin)        @Hispanic        @NPCT         @NPCT";
+  213   value MMSETOT
+  214      1 = "MMSETOT  @Page @01 @Order @510 @MMSE                 @N               @N            @UNIVARIATE"
+  215      2 = "MMSETOT  @Page @01 @Order @520 @MMSE                 @Mean(SD)        @Mean StdDev  @UNIVARIATE"
+  216      3 = "MMSETOT  @Page @01 @Order @530 @MMSE                 @Median          @Median       @UNIVARIATE"
+  217      4 = "MMSETOT  @Page @01 @Order @540 @MMSE                 @Min, Max        @Min Max      @UNIVARIATE";
+  218 /*--- PAGE 2 ---*/
+  219   value DURDIS
+  220      1 = "DURDIS   @Page @02 @Order @110 @Duration of disease  @N               @N            @UNIVARIATE"
+  221      2 = "DURDIS   @Page @02 @Order @120 @Duration of disease  @Mean(SD)        @Mean StdDev  @UNIVARIATE"
+  222      3 = "DURDIS   @Page @02 @Order @130 @Duration of disease  @Median          @Median       @UNIVARIATE"
+  223      4 = "DURDIS   @Page @02 @Order @140 @Duration of disease  @Min, Max        @Min Max      @UNIVARIATE";
+  224   value DURDISCD
+  225      1 = "DURDISCD @Page @02 @Order @150 @Duration of disease  @<12 MONTHS      @NPCT         @NPCT"
+  226      2 = "DURDISCD @Page @02 @Order @160 @Duration of disease  @>=12 MONTHS     @NPCT         @NPCT";
+  227   value  EDUCLVL
+  228      1 = "EDUCLVL  @Page @02 @Order @210 @Years of Education   @N               @N            @UNIVARIATE"
+  229      2 = "EDUCLVL  @Page @02 @Order @220 @Years of Education   @Mean(SD)        @Mean StdDev  @UNIVARIATE"
+  230      3 = "EDUCLVL  @Page @02 @Order @230 @Years of Education   @Median          @Median       @UNIVARIATE"
+  231      4 = "EDUCLVL  @Page @02 @Order @240 @Years of Education   @Min, Max        @Min Max      @UNIVARIATE";
+  232   value  WEIGHTBL
+  233      1 = "WEIGHTBL @Page @02 @Order @310 @Baseline weight(kg)  @N               @N            @UNIVARIATE"
+  234      2 = "WEIGHTBL @Page @02 @Order @320 @Baseline weight(kg)  @Mean(SD)        @Mean StdDev  @UNIVARIATE"
+  235      3 = "WEIGHTBL @Page @02 @Order @330 @Baseline weight(kg)  @Median          @Median       @UNIVARIATE"
+  236      4 = "WEIGHTBL @Page @02 @Order @340 @Baseline weight(kg)  @Min, Max        @Min Max      @UNIVARIATE";
+  237 /*--- PAGE 3 ---*/
+  238   value  HEIGHTBL
+  239      1 = "HEIGHTBL @Page @03 @Order @110 @Baseline height(cm)  @N               @N            @UNIVARIATE"
+  240      2 = "HEIGHTBL @Page @03 @Order @120 @Baseline height(cm)  @Mean(SD)        @Mean StdDev  @UNIVARIATE"
+  241      3 = "HEIGHTBL @Page @03 @Order @130 @Baseline height(cm)  @Median          @Median       @UNIVARIATE"
+  242      4 = "HEIGHTBL @Page @03 @Order @140 @Baseline height(cm)  @Min, Max        @Min Max      @UNIVARIATE";
+  243   value  BMIBL
+  244      1 = "BMIBL    @Page @03 @Order @210 @Baseline BMI         @N               @N            @UNIVARIATE"
+  245      2 = "BMIBL    @Page @03 @Order @220 @Baseline BMI         @Mean(SD)        @Mean StdDev  @UNIVARIATE"
+  246      3 = "BMIBL    @Page @03 @Order @230 @Baseline BMI         @Median          @Median       @UNIVARIATE"
+  247      4 = "BMIBL    @Page @03 @Order @240 @Baseline BMI         @Min, Max        @Min Max      @UNIVARIATE";
+  248   value BMICD
+  249      1 = "BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT"
+  250      2 = "BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT"
+  251      3 = "BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT";
+  252 run;
+  253 
+  254 /*--- CREATE A TABLE FROM THE FOEMAT CODE ---*/
+  255 proc format lib=library.formats cntlout=workx.mockup;
+  256 run;
+  257 
+  258 proc print data=workx.mockup(keep=fmtname label);
+  259 run;
+  260 
+  261 /*---
+  262 LIST:   14NOV2026:07:13:25
+  263   Obs  FMTNAME   LABEL
+  264     1  AGE       AGE      @Page @01 @Order @110 @AGE (y)              @N               @N            @UNIVARIATE
+  265     2  AGE       AGE      @Page @01 @Order @120 @AGE (y)              @Mean(SD)        @Mean StdDev  @UNIVARIATE
+  266     3  AGE       AGE      @Page @01 @Order @130 @AGE (y)              @Median          @Median       @UNIVARIATE
+  267     4  AGE       AGE      @Page @01 @Order @140 @AGE (y)              @Min, Max        @Min Max      @UNIVARIATE
+  268     5  AGEGR1N   AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT
+  269     6  AGEGR1N   AGEGR1N  @Page @01 @Order @220 @@AGE (y)             @65-80 yrs       @NPCT         @NPCT
+  270     7  AGEGR1N   AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT
+  271 ---*/
+  272 
+  273 /*--- PIVOT LONG ---*/
+  274 data workx.nrm1st;
+  275   keep    trt question answer;
+  276   length  question  $200;
+  277   set workx.adsl12;
+  278   question=put(sexn,sexn.);        answer=1;        link all; * NPCT;
+  279   question=put(racen,racen.);      answer=1;        link all;
+  280   question=put(AGEGR1N,AGEGR1N.);  answer=1;        link all;
+  281   question=put(durdiscd,durdiscd.);answer=1;        link all;
+  282   question=put(bmicd,bmicd.);      answer=1;        link all;
+  283   question='AGE';                  answer=age;      link all; * UNIVARIATE;
+  284   question='MMSETOT';              answer=MMSETOT;  link all;
+  285   question='EDUCLVL';              answer= EDUCLVL; link all;
+  286   question='DURDIS' ;              answer= DURDIS;  link all;
+  287   question='WEIGHTBL';             answer= WEIGHTBL;link all;
+  288   question='HEIGHTBL';             answer= HEIGHTBL;link all;
+  289   question='BMIBL';                answer= BMIBL;   link all;
+  290 return;
+  291 all:
+  292   output;
+  293   savtrt=trt;
+  294   trt="All";
+  295   output;
+  296   trt=savtrt;
+  297 return;
+  298 run;
+  299 
+  300 proc print data=workx.nrm1st(obs=5);
+  301 run;
+  302 
+  303 
+  304 /*--- FILL IN ALL POSSIBLE NPCT COMBINATIONS WITH 0 COUNTS FOR A LATTER JOIN         ---*/
+  305 /*--- NEED A SHELL TABLE SO MISSING CATEGORIES CAN BE REPRESENTED IN THE REPORT      ---*/
+  306 /*--- NOTE WE USE THE FORMAT TO GENERATE ALL COMBINATIONS                            ---*/
+  307 /*--- ANSWER WILL BE THE WEIGHTS MISSING CATEGORIES WILL HAVE 0 COUNTS AND PERCENTS  ---*/
+  308 /*--- WE WILL BE TAKING AVANTAGE OF POWERFULl QUESTION/ANSWER NORMAILZATION          ---*/
+  309 data workx.shl;
+  310  length  question  $96 trt $24;
+  311  keep trt question answer;
+  312  set workx.mockup(where=(scan(label,8,'@') eq 'NPCT'));      /* only categorical variables */
+  313  trt="Placebo"    ; question=label; answer=0; output;
+  314  trt="XL"         ; question=label; answer=0; output;
+  315  trt="XH"         ; question=label; answer=0; output;
+  316  trt="All"        ; question=label; answer=0; output;
+  317 run;
+  318 
+  319 proc print data=workx.shl;
+  320 run;
+  321 
+  322 /*--- NOTE ALL THE 0 (60 of them)
+  323 Obs  question                                                                                   trt      answer
+  324   1  AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT  Placebo       0
+  325   2  AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT  XL            0
+  326   3  AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT  XH            0
+  327   4  AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT  All           0
+  328 ---*/
+  329 
+  330 /*--- ALL NPCT ROWS HAVE JUST 1 WE WILL AD 0S LATER TO FILL IN ALL POSSIBLE COMBINATIONS ---*/
+  331 proc sql;
+  332  create
+  333    table workx.shldat  as
+  334  select
+  335    coalesce(dat.trt,shl.trt)                                   as trt
+  336   ,coalesce(SCAN(dat.question,1),sCAN(shl.question,1)) as grp  length=8
+  337   ,coalesce(dat.question,shl.question)                         as question length=96
+  338   ,coalesce(dat.answer,shl.answer)                             as answer
+  339  from
+  340   (select distinct * from workx.shl) as shl left join workx.nrm1st as dat
+  341  on
+  342   shl.question = dat.question  and
+  343   shl.trt      = dat.trt
+  344  order
+  345   by grp, trt, question;
+  346 ;quit;
+  347 
+  348 proc freq data=workx.shldat;
+  349   tables trt;
+  350 run;
+  351 
+  352 proc print data=workx.shldat(obs=10);
+  353 run;
+  354 
+  355 /*---
+  356 LIST:   14NOV2026:07:19:41 LOTS OF ONES
+  357                                      Cumulative    Cumulative
+  358 trt        Frequency    Percent     Frequency      Percent
+  359 ----------------------------------------------------------------
+  360 All             1271     49.88         1271        49.88
+  361 Placebo          433     16.99         1704        66.88
+  362 XH               422     16.56         2126        83.44
+  363 XL               422     16.56         2548       100.00
+  364 
+  365  trt  grp      question                                                                                   answer
+  366  All  AGEGR1N  AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT       1
+  367  All  AGEGR1N  AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT       1
+  368  All  AGEGR1N  AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT       1
+  369  All  AGEGR1N  AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT       1
+  370  All  AGEGR1N  AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT       1
+  371 ---*/
+  372 
+  373 /*--- DIMENSION VARIABLES CATEGORICAL N(PCT) VARIABLES ---*/
+  374 proc sql;
+  375    create
+  376      table workx.cntpct as
+  377    select
+  378     distinct
+  379      l.trt
+  380     ,l.grp
+  381     ,l.question
+  382     ,r.sumgrp
+  383     ,cats(put(sum(l.answer),4.),'(',put(sum(l.answer)/r.sumgrp,percent.),')') as answer
+  384   from
+  385      workx.shldat as l, (select trt, grp, sum(answer) as sumgrp from workx.shldat group by trt, grp) as r
+  386   where
+  387      l.trt        =  r.trt  and
+  388      l.grp        =  r.grp
+  389   group
+  390      by l.trt, l.grp, l.question
+  391 ;quit;
+  392 
+  393 proc print data=workx.cntpct;
+  394 run;
+  395 
+  396 /*---
+  397 LIST:   14NOV2026:07:25:08
+  398   Obs  trt      grp       question
+  399     1  All      AGEGR1N   AGEGR1N  @Page @01 @Order @210 @AGE (y)              @<65 yrs         @NPCT         @NPCT
+  400     2  All      AGEGR1N   AGEGR1N  @Page @01 @Order @220 @@AGE (y)             @65-80 yrs       @NPCT         @NPCT
+  401     3  All      AGEGR1N   AGEGR1N  @Page @01 @Order @230 @AGE (y)              @>80             @NPCT         @NPCT
+  402     4  All      BMICD     BMICD    @Page @03 @Order @310 @Baseline BMI         @<25             @NPCT         @NPCT
+  403     5  All      BMICD     BMICD    @Page @03 @Order @320 @Baseline BMI         @25-30           @NPCT         @NPCT
+  404     6  All      BMICD     BMICD    @Page @03 @Order @330 @Baseline BMI         @>=30            @NPCT         @NPCT
+  405 ---*/
+  406 
+  407 /*---  SUMMARIZE    FACT NUMERIC VARIABLE                                            ---*/
+  408 /*---  STATISTICS   Mean StdDev Median Min Max N                                     ---*/
+  409 /*---  FLOATS      "AGE" "BMIBL" "DURDIS" "EDUCLVL" "HEIGHTBL" "MMSETOT" "WEIGHTBL"  ---*/
+  410 proc sql;
+  411   select distinct(quote(trim(scan(label,1,'@',' ')))) into :floats separated by ' '     from workx.mockup where trim(scan(label,9,'@'))  ne "NPCT";
+  412   select distinct(trim(scan(label,8,'@',' ')))  into :statistics separated by ' '     from workx.mockup where trim(scan(label,9,'@'))  ne "NPCT";
+  413 quit;
+  414 
+  415 %put 1 &=floats;
+  416 %put 2 &=statistics;
+  417 
+  418 proc summary data=workx.nrm1st(where=(trim(scan(question,1,'@',' ')) in (&floats))) &statistics nway;
+  419 class trt question;
+  420 var answer;
+  421 output out=workx.demunv;
+  422 run;
+  423 
+  424 proc print data=workx.demunv;
+  425 run;
+  426 
+  427 /*---
+  428 LIST:   14NOV2026:07:29:58 FACT VARIABLES
+  429   Obs  TRT      QUESTION  _TYPE_  _FREQ_     ANSWER_Mean  ANSWER_StdDev  ANSWER_Median  ANSWER_Min  ANSWER_Max  ANSWER_N
+  430     1  All      AGE            3     254   75.0866141732   8.2462338962             77          51          89       254
+  431     2  All      BMIBL          3     254   24.6723320158    4.092184927           24.2        13.7        40.1       253
+  432     3  All      DURDIS         3     254   43.9393700787  28.3973156263          36.25         2.2       183.1       254
+  433     4  All      EDUCLVL        3     254   12.7519685039   3.3829227112             12           3          24       254
+  434     5  All      HEIGHTBL       3     254   163.931496063  10.7604472686         162.85       135.9       195.6       254
+  435     6  All      MMSETOT        3     254   18.1417322835   4.2103287441             19          10          24       254
+  436     7  All      WEIGHTBL       3     254    66.647826087  14.1314255373           66.7          34         108       253
+  437 ---*/
+  438 
+  439 /*--- PIVOT LONG FACT VARIABLES ---*/ ;
+  440 data workx.nrmunv;
+  441  keep trt grp question answer;
+  442  length question answer $96;
+  443  do until (dne);
+  444    set workx.demunv end=dne;
+  445    format _all_;
+  446    grp=question;
+  447    fmt=strip(question);
+  448    question=putn(1,fmt);
+  449    answer=put(answer_n,5.);
+  450    output;
+  451    question=putn(2,fmt);
+  452    answer=cats(put(answer_mean,5.),'(',put(answer_stddev,5.1),')');
+  453    output;
+  454    question=putn(3,fmt);
+  455    answer=put(answer_median,5.);
+  456    output;
+  457    question=putn(4,fmt);
+  458    answer=strip(put(answer_min,5.))!!', '!!strip(put(answer_max,5.));
+  459    output;
+  460  end;
+  461 
+  462  dne=0;
+  463  do until (dn1);
+  464    set workx.cntpct end=dn1;
+  465    format _all_;
+  466    output;
+  467  end;
+  468  stop;
+  469 run;
+  470 
+  471 proc print data=workx.nrmunv;
+  472 run;
+  473 
+  474 /*----
+  475 LIST:   14NOV2026:07:32:05
+  476   Obs  question                                                                                         answer     TRT
+  477     1  AGE      @Page @01 @Order @110 @AGE (y)              @N               @N            @UNIVARIATE    254
+  478     2  AGE      @Page @01 @Order @120 @AGE (y)              @Mean(SD)        @Mean StdDev  @UNIVARIATE  75(8.2)    All
+  479     3  AGE      @Page @01 @Order @130 @AGE (y)              @Median          @Median       @UNIVARIATE     77      All
+  480     4  AGE      @Page @01 @Order @140 @AGE (y)              @Min, Max        @Min Max      @UNIVARIATE  51, 89     All
+  481    '''
+  482    57  AGE      @Page @01 @Order @110 @AGE (y)              @N               @N            @UNIVARIATE     84       XH
+  483    58  AGE      @Page @01 @Order @120 @AGE (y)              @Mean(SD)        @Mean StdDev  @UNIVARIATE  74(7.9)     XH
+  484    59  AGE      @Page @01 @Order @130 @AGE (y)              @Median          @Median       @UNIVARIATE     76       XH
+  485    60  AGE      @Page @01 @Order @140 @AGE (y)              @Min, Max        @Min Max      @UNIVARIATE  56, 88      X
+  486 ---*/
+  487 
+  488 /*--- PIVOT WIDE BY QUESTION TRT ---*/
+  489 
+  490 proc sort data=workx.nrmunv out=srt nodupkey;
+  491   by question trt;
+  492 run;
+  493 
+  494 proc transpose data=srt out=workx.xpo(drop=_name_) ;
+  495  by question;
+  496  id trt;
+  497  var answer;
+  498 run;
+  499 
+  500 proc print data=workx.xpo width=min;
+  501 run;quit;
+  502 
+  503 /*---
+  504 
+  505                                                                                                      ADDED THESE
+  506 LIST:   14NOV2026:07:44:34                                                                 ---------------------------------
+  507   Obs  question                                                                            All      Placebo    XH         XL
+  508     1  AGE      @Page @01 @Order @110 @AGE (y)  @N           @N            @UNIVARIATE    254        86         84         84
+  509     2  AGE      @Page @01 @Order @120 @AGE (y)  @Mean(SD)    @Mean StdDev  @UNIVARIATE  75(8.2)   75(8.6)    74(7.9)    76(8.3)
+  510     3  AGE      @Page @01 @Order @130 @AGE (y)  @Median      @Median       @UNIVARIATE     77        76         76         78
+  511     4  AGE      @Page @01 @Order @140 @AGE (y)  @Min, Max    @Min Max      @UNIVARIATE  51, 89    52, 89     56, 88     51, 88
+  512     5  AGEGR1N  @Page @01 @Order @210 @AGE (y)  @<65 yrs     @NPCT         @NPCT        144(57%)  42(49%)    55(65%)    47(56%)
+  513     6  AGEGR1N  @Page @01 @Order @220 @@AGE (y) @65-80 yrs   @NPCT         @NPCT        33(13%)   14(16%)    11(13%)    8(10%)
+  514     7  AGEGR1N  @Page @01 @Order @230 @AGE (y)  @>80         @NPCT         @NPCT        77(30%)   30(35%)    18(21%)    29(35%)
+  515  ---*/
+  516 
+  517 
+  518 /*--- P VALUE FACT VARIABLES USING ANOVA ---*/
+  519 proc sql;
+  520   select distinct(trim(scan(label,1,'@',' ')))
+  521   into :floats
+  522   separated by ' '
+  523   from workx.mockup
+  524   where trim(scan(label,9,'@')) ne "NPCT";
+  525 quit;
+  526 
+  527 %put FLOATS &=floats;
+  528 /*--- FLOATS FLOATS=AGE MMSE ---*/
+  529 
+  530 %macro glmx(vars);
+  531 %local i res;
+  532 %let i=0;
+  533 %do i=1 %to %sysfunc(countw(&floats));
+  534   %let res=%qscan(&vars,&i);
+  535   %put ITER &=res &=i;
+  536   ods output OverallANOVA=&res;
+  537   proc glm data=workx.ADSL12;
+  538     class trt;
+  539     model &res = trt;
+  540   run;
+  541 %end;
+  542 ods output close;
+  543 run;
+  544 %mend glmx;
+  545 
+  546 %glmx(&floats);
+  547 
+  548 %put &=floats;
+  549 
+  550 PROC PRINT DATA=AGE;
+  551 run;
+  552 
+  553 data workx.pFloats;
+  554   set &floats indsname=src;
+  555   if upcase(source)="MODEL";
+  556   fro=scan(src,2,'.');
+  557   put fro= src=;
+  558   pval=input(probf,8.5);
+  559   keep fro pval;
+  560 run;
+  561 
+  562 proc print data=workx.pfloats;
+  563 run;
+  564 
+  565 /*---
+  566 LIST:   14NOV2026:07:59:39
+  567 Obs  fro           pval
+  568     1  AGE       0.593435
+  569     2  BMIBL     0.013319
+  570     3  DURDIS     0.15296
+  571     4  EDUCLVL   0.387508
+  572     5  HEIGHTBL  0.126217
+  573     6  MMSETOT   0.594659
+  574     7  WEIGHTBL   0.00304
+  575 ---*/
+  576 
+  577 /*--- P VALUE DIMENTSION FACT VARIABLES USING PROC FREQ     ---*/
+  578 /*--- DIMENSION VARIABLES AGEGR1N BMICD DURDISCD RACEN SEXN  ---*/
+  579 proc sql;
+  580   select distinct(trim(scan(label,1,'@',' ')))
+  581   into :catagorical
+  582   separated by ' '
+  583   from workx.mockup
+  584   where trim(scan(label,9,'@')) eq "NPCT";
+  585 quit;
+  586 
+  587 %put CATAGORICAL &=CATAGORICAL;
+  588 
+  589 /*--- COMPUTE P VALS USING PROC FTREQ ---*/
+  590 %MACRO FRQX(VARS);
+  591 %local i res;
+  592 %let i=0;
+  593 %do %until(&res= );
+  594   %let i=%eval(&i + 1);
+  595   %let res=%qscan(&vars,&i);
+  596   %put ITER &=res &=i;
+  597   Proc freq data=workx.adsl12;
+  598     tables trt*&res / chisq expected;
+  599   output out=&res pchi;
+  600   run;
+  601 %end;
+  602 %mend frqx;
+  603 
+  604 %frqx(&catagorical);
+  605 
+  606 /*--- TABLE WITH P VALUES ---*/
+  607 data workx.pCatagorical;
+  608   set &catagorical indsname=src;
+  609   fro=scan(src,2,'.');
+  610   put fro= src=;
+  611   pval=p_pchi;
+  612   keep fro pval;
+  613 run;
+  614 
+  615 proc print data=workx.pCatagorical;
+  616 run;
+  617 
+  618 /*---
+  619 LIST:   14NOV2026:08:05:32
+  620   Obs  fro         pval
+  621     1  AGEGR1N   0.1439
+  622     2  BMICD     0.2235
+  623     3  DURDISCD  0.7885
+  624     4  RACEN      0.604
+  625     5  SEXN      0.1409
+  626  16
+  627 ---*/
+  628 
+  629 /*--- COMBINE DIMENSION AND FACT VARIABLE P VALUES ---*/
+  630 data workx.glmfrq;
+  631    length fro $8;
+  632    set
+  633      workx.pCatagorical
+  634      workx.pfloats;
+  635    format pval 8.5;
+  636 run;
+  637 
+  638 proc print data=workx.glmfrq;
+  639 run;
+  640 
+  641 /*---
+  642 LIST:   14NOV2026:08:06:58
+  643   Obs  fro           pval
+  644     1  AGEGR1N    0.14390
+  645     2  BMICD      0.22350
+  646     3  DURDISCD   0.78850
+  647     4  RACEN      0.60400
+  648     5  SEXN       0.14090
+  649     6  AGE        0.59344
+  650     7  BMIBL      0.01332
+  651     8  DURDIS     0.15296
+  652     9  EDUCLVL    0.38751
+  653    10  HEIGHTBL   0.12622
+  654    11  MMSETOT    0.59466
+  655    12  WEIGHTBL   0.00304
+  656 ---*/
+  657 
+  658 /*--- ADD PVALUES TO QUESTIONS ---*/
+  659 proc sql;
+  660    create
+  661       table workx.addpvals as
+  662    select
+  663       l.*
+  664      ,r.pval
+  665    from
+  666      workx.xpo as l left join workx.glmfrq as r
+  667    on
+  668      scan(question,1,' ') = r.fro
+  669 ;quit;
+  670 
+  671 proc print data=workx.addpvals;
+  672 run;
+  673 
+  674 /*---
+  675 LIST:   14NOV2026:08:10:00
+  676   question                                                                        All    Placebo    XH         XL          pval
+  677   AGE   @Page @01 @Order @110 @AGE (y)  @N          @N            @UNIVARIATE    254        86         84         84    0.59344
+  678   AGE   @Page @01 @Order @120 @AGE (y)  @Mean(SD)   @Mean StdDev  @UNIVARIATE  75(8.2)   75(8.6)    74(7.9)    76(8.3)  0.59344
+  679   AGE   @Page @01 @Order @130 @AGE (y)  @Median     @Median       @UNIVARIATE     77        76         76         78    0.59344
+  680   AGE   @Page @01 @Order @140 @AGE (y)  @Min, Max   @Min Max      @UNIVARIATE  51, 89    52, 89     56, 88     51, 88   0.59344
+  681 
+  682 
+  683 /*---REMOVE QUESTION AND SET UP FOR PROC REPORT ---*/
+  684 proc sql;
+  685  create
+  686    table workx.prerpt as
+  687  select
+  688     input(scan(question,3,'@'),5.) as pge
+  689    ,scan(question,5,'@')           as odr length=3
+  690    ,scan(question,6,'@')           as mjr length=64
+  691    ,scan(question,7,'@')           as mnr length=64
+  692    ,Placebo      length=24
+  693    ,XL           length=24
+  694    ,XH           length=24
+  695    ,all          length=24
+  696    ,Pval         length=24
+  697  from
+  698    workx.addpvals
+  699  where
+  700    scan(question,5,'@') ne 'XX'
+  701  order
+  702    by pge, odr
+  703 ;quit;
+  704 
+  705 proc print data=workx.prerpt;
+  706 run;
+  707 
+  708 /*---
+  709 LIST:   14NOV2026:08:14:30
+  710   Obs  pge  odr  mjr       mnr        Placebo    XL         XH         All            pval
+  711     1    1  110  AGE (y)   N             86         84         84        254       0.59344
+  712     2    1  120  AGE (y)   Mean(SD)   75(8.6)    76(8.3)    74(7.9)    75(8.2)     0.59344
+  713     3    1  130  AGE (y)   Median        76         78         76         77       0.59344
+  714     4    1  140  AGE (y)   Min, Max   52, 89     51, 88     56, 88     51, 89      0.59344
+  715     5    1  210  AGE (y)   <65 yrs    42(49%)    47(56%)    55(65%)    144(57%)    0.14390
+  716     6    1  220            AGE (y)    14(16%)    8(10%)     11(13%)    33(13%)     0.14390
+  717     7    1  230  AGE (y)   >80        30(35%)    29(35%)    18(21%)    77(30%)     0.14390
+  718 ---*/
+  719 
+  720 /*--- THIS HARDCODING SHOULD BE REMOVED                                                   ---*/
+  721 /*--- THIS CODE WAS ADDED BECAUSE I FORGOT TO ADD IT TO PREVIOUS PROC FREQ                ---*/
+  722 /*--- TOO LAZY TO GO BACK AND ADD NS USING PREVIOUS PROC FREQ                             ---*/
+  723 /*--- THERE WERE TWO CASES WITH N COUNTS FOR DIMENSION VARIABLES THAT I FORGOT TO COMPUTE ---*/
+  724 /*--- NOT ALL DIMENSION VARIABLES HAVE THE N CATEGORY                                     ---*/
+  725 /*--- FIINAL STEPS TO TO CREATE FINAL TAB:E FOR PROC REPORT                               ---*/
+  726 proc sql;
+  727   create table workx.fillin as (
+  728   select trt,'Sex' as cat, '300' as odr, count(sexn) as cnt_nomiss from workx.adsl12 group by trt
+  729   union all
+  730   select trt,'Race (Origin)' as cat, '400' as odr, count(racen) as cnt_nomiss from workx.adsl12 group by trt
+  731   union all
+  732   select 'All' as trt,'Sex' as cat, '300' as odr, count(sexn) as cnt_nomiss from workx.adsl12
+  733   union  all
+  734   select 'All' as trt,'Race (Origin)' as cat, '400' as odr, count(racen) as cnt_nomiss from workx.adsl12)
+  735   order by odr;
+  736 ;quit;
+  737 
+  738 proc transpose data=workx.fillin out=workx.xpofillin;
+  739 id trt;
+  740 by odr;
+  741 var cnt_nomiss;
+  742 run;
+  743 
+  744 proc print data=workx.xpofillin;
+  745 run;
+  746 
+  747 /*--- HERE ARE THE NS WE NEED TO ADD )NOTEPAGE ODER IS A PRIMARY KEY
+  748 LIST:   14NOV2026:08:32:33
+  749   Obs  odr  _NAME_      Placebo  XH  XL  All
+  750     1  300  cnt_nomiss       86  84  84  254
+  751     2  400  cnt_nomiss       86  84  84  254
+  752 ---*/
+  753 
+  754 /*--- IN PLACE MODIFICATION TO REPLACE THE SHELL CREATED 0'S FOR N WITH NEW VALUES ---*/
+  755 data workx.prerpt;
+  756   modify workx.prerpt workx.xpofillin;
+  757   by odr;
+  758 run;quit;
+  759 
+  760 proc print data=workx.prerpt;
+  761 run;
+  762 
+  763 /*--- fix pval ---*/
+  764 data workx.fixpval;
+  765    length mjr $20;
+  766    set workx.prerpt;
+  767    by pval notsorted;
+  768    mjr=strip(mjr);
+  769    if first.pval then pvalue=put(pval,6.4);
+  770    else pvalue=' ';
+  771    output;
+  772    if cats(pge,odr) in ("1140","3240","2140") then do;
+  773    mnr="";placebo="";xl="";xh="";all="";output;
+  774    end;
+  775    drop pval;
+  776 run;
+  777 
+  778 proc print data=workx.fixpval;
+  779 run;
+  780 
+  781 /*---
+  782 LIST:   14NOV2026:08:42:05
+  783   Obs  pge  odr  mjr                    mnr                   Placebo    XL         XH         All            pval
+  784     1    1  110  AGE (y)                N                        86         84         84        254       0.59344
+  785     2    1  120  AGE (y)                Mean(SD)              75(8.6)    76(8.3)    74(7.9)    75(8.2)     0.59344
+  786     3    1  130  AGE (y)                Median                   76         78         76         77       0.59344
+  787     4    1  140  AGE (y)                Min, Max              52, 89     51, 88     56, 88     51, 89      0.59344
+  788     5    1  210  AGE (y)                <65 yrs               42(49%)    47(56%)    55(65%)    144(57%)    0.14390
+  789     6    1  220  AGE (y)                65-80                 14(16%)    8(10%)     11(13%)    33(13%)     0.14390
+  790     7    1  230  AGE (y)                >80                   30(35%)    29(35%)    18(21%)    77(30%)     0.14390
+  791 ---*/
+  792 
+  793 proc sql;select max(pge) into :maxpge separated by '' from prerpt;quit;
+  794 %put MAX NUMBER OF PAGES &=maxpge;
+  795 /*--- MAX NUMBER OF PAGES MAXPGE=3 ---*/
+  796 
+  797 /*--- COMPUTE BIG Ns ---*/
+  798 proc sql;
+  799   select cats("Placebo","#(N=",sum(trt="Placebo"),")") into :Placebo      from workx.adsl12;
+  800   select cats("Xanomeline#Low Dose","#(N=",sum(trt="XL"),")") into :XL    from workx.adsl12;
+  801   select cats("Xanomeline#High Dose","#(N=",sum(trt="XH"),")") into :XH   from workx.adsl12;
+  802   select cats("Total","#(N=",count(*),")") into :All from workx.adsl12;
+  803   select catx(' ',put(timepart(datetime()), time5.),put(datepart(datetime()), weekdate29.)) into :dt from workx.adsl12(obs=1);
+  804 ;quit;
+  805 
+  806 %put &=xl;
+  807 %put &=xh;
+  808 %put &=placebo;
+  809 %put &=dt;
+  810 
+  811 /*---
+  812 XL=Xanomeline#Low Dose#(N=84)
+  813 XH=Xanomeline#High Dose#(N=84)
+  814 PLACEBO=Placebo#(N=86)
+  815 DT=8:50 Saturday, November 14, 2026
+  816 ---*/
+  817 
+  818 %utlfkil(d:/txt/adsl.txt);
+  819 
+  820 options ps=42 center nodate nonumber;
+  821 ods listing file = "d:/txt/adsl.txt";
+  822 proc sql;select max(pge) into :maxpge separated by '' from prerpt;quit;
+  823 %put MAX NUMBER OF PAGES &=maxpge;
+  824 %macro mny;
+  825  %do pge=1 %to &maxpge;
+  826     proc report data=workx.fixpval(where=(pge=&pge))  nowd split='#' missing headskip;
+  827     title1  "Protocol: CDISCPILOT01                                                                  Page &pge of 3";
+  828     TiTLe2  "Population: Intent-to-Treat                                                                        ";
+  829     TiTLe3  "Table 14-2.01";
+  830     TiTLe4  "Summary of Demographic and Baseline Characteristics";
+  831          cols  pge mjr mnr placebo xl xh all pvalue;
+  832           define pge           / order " " noprint;
+  833           define mjr           / order " " left width=20  order=data;
+  834           define mnr           / display  " "              width=15;
+  835           define placebo       / display  "&placebo" right width=8;
+  836           define XL            / display  "&XL"      right width=10;
+  837           define XH            / display  "&XH"      right width=10;
+  838           define All           / display  "&All"     right width=8;
+  839           define pvalue        / display  "P-Value#[1]"    width=8;
+  840           break after mjr;
+  841           compute after mjr;
+  842             spc=" ";
+  843             line spc $char1.;
+  844           endcomp;
+  845           break after pge / page;
+  846      footnote1 "[1] P-values are results of ANOVA treatment group comparison for continuous variable and Pearson's ";
+  847      footnote2 "chi-square test for categorical variables.                                                         ";
+  848      footnote3 "NOTE: Duration of disease is computed as months between date of enrollment and date of onset of the";
+  849      footnote4 "first definite symptoms of Alzheimer's disease.                                                    ";
+  850      footnote5 "Source: C:\cdisc_pilot\PROGRAMS\DRAFT\TFLs\adsl3.sas                 &dt";
+  851     run;quit;
+  852  %end;
+  853 %mend nmy;
+  854 %mny;
+  855 ods listing close;
+  856 
+  857 /*---
+  858           Protocol: CDISCPILOT01                                                                  Page 1 of 3
+  859           Population: Intent-to-Treat
+  860                                                      Table 14-2.01
+  861                                   Summary of Demographic and Baseline Characteristics
+  862 
+  863                                                                  Xanomeline  Xanomeline
+  864                                                         Placebo    Low Dose    Low Dose     Total  P-Value
+  865                                                          (N=86)      (N=84)      (N=84)   (N=254)  [1]
+  866 
+  867              AGE (y)                   N                     86          84          84       254  0.5934
+  868                                        Mean(SD)         75(8.6)     76(8.3)     76(8.3)   75(8.2)
+  869                                        Median                76          78          78        77
+  870                                        Min, Max          52, 89      51, 88      51, 88    51, 89
+  871 
+  872                                        <65 yrs          42(49%)     47(56%)     47(56%)  144(57%)  0.1439
+  873                                        65-80 yrs        14(16%)      8(10%)      8(10%)   33(13%)
+  874                                        >80              30(35%)     29(35%)     29(35%)   77(30%)
+  875 
+  876              Sex                       N                     86          84          84       254  0.1409
+  877                                        Male             33(38%)     34(40%)     34(40%)  111(44%)
+  878                                        Female           53(62%)     50(60%)     50(60%)  143(56%)
+  879 
+  880              Race (Origin)             N                     86          84          84       254  0.6040
+  881                                        Cacasian         78(91%)     78(93%)     78(93%)  230(91%)
+  882                                        African Descen     8(9%)       6(7%)       6(7%)    23(9%)
+  883                                        Hispanic           0(0%)       0(0%)       0(0%)     1(0%)
+  884 
+  885              MMSE                      N                     86          84          84       254  0.5947
+  886                                        Mean(SD)         18(4.3)     18(4.2)     18(4.2)   18(4.2)
+  887                                        Median                20          18          18        19
+  888                                        Min, Max          10, 23      10, 24      10, 24    10, 24
+  889 
+  890 
+  891           [1] P-values are results of ANOVA treatment group comparison for continuous variable and Pearson's
+  892           chi-square test for categorical variables.
+  893           NOTE: Duration of disease is computed as months between date of enrollment and date of onset of the
+  894           first definite symptoms of Alzheimer's disease.
+  895           Source: C:\cdisc_pilot\PROGRAMS\DRAFT\TFLs\adsl3.sas                12:13 Friday, November 13, 2026
+  896 
+  897 
+  898 
+  899           Protocol: CDISCPILOT01                                                                  Page 2 of 3
+  900           Population: Intent-to-Treat
+  901                                                      Table 14-2.01
+  902                                   Summary of Demographic and Baseline Characteristics
+  903 
+  904                                                                  Xanomeline  Xanomeline
+  905                                                         Placebo    Low Dose    Low Dose     Total  P-Value
+  906                                                          (N=86)      (N=84)      (N=84)   (N=254)  [1]
+  907 
+  908              Duration of disease       N                     86          84          84       254  0.1530
+  909                                        Mean(SD)        43(30.2)    49(29.6)    49(29.6)  44(28.4)
+  910                                        Median                35          40          40        36
+  911                                        Min, Max          7, 183      8, 131      8, 131    2, 183
+  912 
+  913                                        <12 MONTHS         5(6%)       3(4%)       3(4%)    12(5%)  0.7885
+  914                                        >=12 MONTHS      81(94%)     81(96%)     81(96%)  242(95%)
+  915 
+  916              Years of Education        N                     86          84          84       254  0.3875
+  917                                        Mean(SD)         13(2.9)     13(4.1)     13(4.1)   13(3.4)
+  918                                        Median                12          12          12        12
+  919                                        Min, Max           6, 21       3, 24       3, 24     3, 24
+  920 
+  921              Baseline weight(kg)       N                     86          83          83       253  0.0030
+  922                                        Mean(SD)        63(12.8)    67(14.1)    67(14.1)  67(14.1)
+  923                                        Median                61          65          65        67
+  924                                        Min, Max          34, 86     45, 106     45, 106   34, 108
+  925 
+  926 
+  927           [1] P-values are results of ANOVA treatment group comparison for continuous variable and Pearson's
+  928           chi-square test for categorical variables.
+  929           NOTE: Duration of disease is computed as months between date of enrollment and date of onset of the
+  930           first definite symptoms of Alzheimer's disease.
+  931           Source: C:\cdisc_pilot\PROGRAMS\DRAFT\TFLs\adsl3.sas                12:13 Friday, November 13, 2026
+  932 
+  933 
+  934 
+  935           Protocol: CDISCPILOT01                                                                  Page 3 of 3
+  936           Population: Intent-to-Treat
+  937                                                      Table 14-2.01
+  938                                   Summary of Demographic and Baseline Characteristics
+  939 
+  940                                                                  Xanomeline  Xanomeline
+  941                                                         Placebo    Low Dose    Low Dose     Total  P-Value
+  942                                                          (N=86)      (N=84)      (N=84)   (N=254)  [1]
+  943 
+  944              Baseline height(cm)       N                     86          84          84       254  0.1262
+  945                                        Mean(SD)        163(11.5   163(10.4)   163(10.4)  164(10.8
+  946                                        Median               163         163         163       163
+  947                                        Min, Max        137, 185    136, 196    136, 196  136, 196
+  948 
+  949              Baseline BMI              N                     86          83          83       253  0.0133
+  950                                        Mean(SD)         24(3.7)     25(4.3)     25(4.3)   25(4.1)
+  951                                        Median                23          24          24        24
+  952                                        Min, Max          15, 33      18, 40      18, 40    14, 40
+  953 
+  954                                        <25              59(69%)     46(55%)     46(55%)  149(59%)  0.2235
+  955                                        25-30            21(24%)     27(33%)     27(33%)   76(30%)
+  956                                        >=30               6(7%)     10(12%)     10(12%)   28(11%)
+  957 
+  958 
+  959           [1] P-values are results of ANOVA treatment group comparison for continuous variable and Pearson's
+  960           chi-square test for categorical variables.
+  961           NOTE: Duration of disease is computed as months between date of enrollment and date of onset of the
+  962           first definite symptoms of Alzheimer's disease.
+  963           Source: C:\cdisc_pilot\PROGRAMS\DRAFT\TFLs\adsl3.sas                12:13 Friday, November 13, 2026
+  964 
+  965  ---*/
+  966 
+  967 /*--- PAD LINES SO FOOTNOTES ARE AT THE BOTTOM OF THE PAGE ---*/
+  968 /*--- PAGESIZE IS CURRENTLY GETTING FIXED                 ----*/
+  969 /*--- JENNER IS ACTIVELY WORKING ON PAGESIXE ISSUES       ----*/
+  970 /*--- SOON YOU WILL NOT NEED TO PAD REPORTS               ----*/
+  971 
+  972 
+  973 
+  974 %utlfkil(d:/txt/adslfix.txt);
+  975 
+  976 options pagesize=42;
+  977 %let footn=5; /*--- NUMBER OD FOOTNOTES ---*/
+  978 %let psx=%sysfunc(getoption(pagesize));
+  979 data workx.FixPs;
+  980   retain lyn 0;
+  981   infile "d:/txt/adsl.txt";
+  982   input;
+  983   file "d:/txt/adslfix.txt";
+  984   if left(_infile_) =: '[1]'  then do;
+  985     savLyn = _infile_;
+  986     *putlog lyn=;
+  987     *--- 5 is the number of footnotes ---;
+  988     do lyns = 1 to ((&psx-&footn) - lyn);
+  989        put "   ";
+  990        *putlog "&psx" lyn=;
+  991        *putlog lyns= _infile_;
+  992     end;
+  993     put savlyn;
+  994     lyn=-&footn;
+  995   end;
+  996   else do;
+  997     lyn = lyn + 1;
+  998     if lyn=1 then _infile_=substr(_infile_,2);
+  999     put _infile_;
+ 1000     *putlog lyn= _infile_;
+ 1001   end;
+ 1002 run;
+ 1003 
+ 1004 /**************************************************************************************************************************/
+ 1005 /*  6 Table 14-2.01 in Microsoft Word Format                                                                              */
+ 1006 /**************************************************************************************************************************/
+ 1007 
+ 1008 /*--- CONVERT TO MS WORD ---*/
+ 1009 %utlfkil(D:\doc\pages.docx);
+ 1010 
+ 1011 %jnr_powershellBegin;
+ 1012 cards4;
+ 1013 $ErrorActionPreference = "Stop"
+ 1014 
+ 1015 $inputFile  = "D:\txt\adslfix.txt"
+ 1016 $outputFile = "D:\doc\pages.docx"
+ 1017 
+ 1018 $word  = $null
+ 1019 $doc   = $null
+ 1020 $range = $null
+ 1021 
+ 1022 try {
+ 1023     Write-Host "1. Checking input file..."
+ 1024 
+ 1025     if (-not (Test-Path -LiteralPath $inputFile -PathType Leaf)) {
+ 1026         throw "Input file not found: $inputFile"
+ 1027     }
+ 1028 
+ 1029     $outputDir = Split-Path -Parent $outputFile
+ 1030 
+ 1031     if (-not (Test-Path -LiteralPath $outputDir)) {
+ 1032         New-Item -ItemType Directory -Path $outputDir -Force |
+ 1033             Out-Null
+ 1034     }
+ 1035 
+ 1036     Write-Host "2. Reading text..."
+ 1037     $text = Get-Content -LiteralPath $inputFile -Raw -Encoding UTF8
+ 1038 
+ 1039     if ([string]::IsNullOrEmpty($text)) {
+ 1040         throw "Input file is empty: $inputFile"
+ 1041     }
+ 1042 
+ 1043     Write-Host "   Read $($text.Length) characters."
+ 1044 
+ 1045     Write-Host "3. Starting Microsoft Word..."
+ 1046     $word = New-Object -ComObject Word.Application
+ 1047 
+ 1048     $word.Visible = $true
+ 1049     $word.DisplayAlerts = -1
+ 1050 
+ 1051     Write-Host "4. Creating document..."
+ 1052     $doc = $word.Documents.Add()
+ 1053 
+ 1054     Write-Host "5. Inserting text..."
+ 1055     $range = $doc.Content
+ 1056     $range.Text = $text
+ 1057 
+ 1058     Write-Host "6. Formatting..."
+ 1059     $range.Font.Name = "Courier New"
+ 1060     $range.Font.Size = 9
+ 1061 
+ 1062     $range.ParagraphFormat.SpaceBefore = 0
+ 1063     $range.ParagraphFormat.SpaceAfter  = 0
+ 1064 
+ 1065     #$doc.PageSetup.Orientation  = 1
+ 1066     #$doc.PageSetup.TopMargin    = 36
+ 1067     #$doc.PageSetup.BottomMargin = 36
+ 1068     #$doc.PageSetup.LeftMargin   = 36
+ 1069     #$doc.PageSetup.RightMargin  = 36
+ 1070 
+ 1071     Write-Host "7. Saving Word document..."
+ 1072 
+ 1073     # 12 = wdFormatXMLDocument (.docx)
+ 1074     $doc.SaveAs2($outputFile, 12)
+ 1075 
+ 1076     if (-not (Test-Path -LiteralPath $outputFile -PathType Leaf)) {
+ 1077         throw "Word returned without creating the DOCX file."
+ 1078     }
+ 1079 
+ 1080     Write-Host "Word document exists: $outputFile"
+ 1081 }
+ 1082 catch {
+ 1083     Write-Host ("ERROR: " + $_.Exception.Message) -ForegroundColor Red
+ 1084     throw
+ 1085 }
+ 1086 finally {
+ 1087     if ($null -ne $range) {
+ 1088         [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($range)
+ 1089     }
+ 1090 
+ 1091     if ($null -ne $doc) {
+ 1092         Write-Host "8. Closing document..."
+ 1093         try {
+ 1094             $doc.Close(0)
+ 1095         }
+ 1096         catch {
+ 1097             Write-Warning $_.Exception.Message
+ 1098         }
+ 1099 
+ 1100         [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($doc)
+ 1101     }
+ 1102 
+ 1103     if ($null -ne $word) {
+ 1104         Write-Host "9. Quitting Word..."
+ 1105         try {
+ 1106             $word.Quit()
+ 1107         }
+ 1108         catch {
+ 1109             Write-Warning $_.Exception.Message
+ 1110         }
+ 1111 
+ 1112         [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($word)
+ 1113     }
+ 1114 }
+ 1115 Write-Host "Finished."
+ 1116 ;;;;
+ 1117 %jnr_powershellEnd;
+ 1118 
+ 1119 /**************************************************************************************************************************/
+ 1120 /*  7 Table 14-2.01 in PDF Format                                                                                         */
+ 1121 /**************************************************************************************************************************/
+ 1122 
+ 1123 %utlfkil(D:\pdf\pages.pdf);
+ 1124 
+ 1125 %jnr_powershellBegin;
+ 1126 cards4;
+ 1127 $ErrorActionPreference = "Stop"
+ 1128 
+ 1129 $inputFile  = "D:\txt\adslfix.txt"
+ 1130 $outputFile = "D:\pdf\pages.pdf"
+ 1131 
+ 1132 $word  = $null
+ 1133 $doc   = $null
+ 1134 $range = $null
+ 1135 
+ 1136 try {
+ 1137     Write-Host "1. Checking input file..."
+ 1138 
+ 1139     if (-not (Test-Path -LiteralPath $inputFile -PathType Leaf)) {
+ 1140         throw "Input file not found: $inputFile"
+ 1141     }
+ 1142 
+ 1143     $outputDir = Split-Path -Parent $outputFile
+ 1144 
+ 1145     if (-not (Test-Path -LiteralPath $outputDir)) {
+ 1146         New-Item -ItemType Directory -Path $outputDir -Force |
+ 1147             Out-Null
+ 1148     }
+ 1149 
+ 1150     Write-Host "2. Reading text..."
+ 1151     $text = Get-Content -LiteralPath $inputFile -Raw -Encoding UTF8
+ 1152 
+ 1153     if ([string]::IsNullOrEmpty($text)) {
+ 1154         throw "Input file is empty: $inputFile"
+ 1155     }
+ 1156 
+ 1157     Write-Host "   Read $($text.Length) characters."
+ 1158 
+ 1159     Write-Host "3. Starting Microsoft Word..."
+ 1160     $word = New-Object -ComObject Word.Application
+ 1161 
+ 1162     # Keep Word visible and alerts enabled during diagnosis.
+ 1163     $word.Visible = $true
+ 1164     $word.DisplayAlerts = -1
+ 1165 
+ 1166     Write-Host "4. Creating document..."
+ 1167     $doc = $word.Documents.Add()
+ 1168 
+ 1169     Write-Host "5. Inserting text..."
+ 1170     $range = $doc.Content
+ 1171     $range.Text = $text
+ 1172 
+ 1173     Write-Host "6. Formatting..."
+ 1174     $range.Font.Name = "Courier New"
+ 1175     $range.Font.Size = 9
+ 1176 
+ 1177     $range.ParagraphFormat.SpaceBefore = 0
+ 1178     $range.ParagraphFormat.SpaceAfter  = 0
+ 1179 
+ 1180     #$doc.PageSetup.Orientation  = 1
+ 1181     #$doc.PageSetup.TopMargin    = 36
+ 1182     #$doc.PageSetup.BottomMargin = 36
+ 1183     #$doc.PageSetup.LeftMargin   = 36
+ 1184     #$doc.PageSetup.RightMargin  = 36
+ 1185 
+ 1186     Write-Host "7. Exporting PDF..."
+ 1187     $doc.ExportAsFixedFormat($outputFile, 17)
+ 1188 
+ 1189     if (-not (Test-Path -LiteralPath $outputFile -PathType Leaf)) {
+ 1190         throw "Word returned without creating the PDF."
+ 1191     }
+ 1192 
+ 1193     Write-Host "PDF exists: $outputFile"
+ 1194 }
+ 1195 catch {
+ 1196     Write-Host ("ERROR: " + $_.Exception.Message) -ForegroundColor Red
+ 1197     throw
+ 1198 }
+ 1199 finally {
+ 1200     if ($null -ne $range) {
+ 1201         [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($range)
+ 1202     }
+ 1203 
+ 1204     if ($null -ne $doc) {
+ 1205         Write-Host "8. Closing document..."
+ 1206         try {
+ 1207             $doc.Close(0)
+ 1208         }
+ 1209         catch {
+ 1210             Write-Warning $_.Exception.Message
+ 1211         }
+ 1212         [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($doc)
+ 1213     }
+ 1214 
+ 1215     if ($null -ne $word) {
+ 1216         Write-Host "9. Quitting Word..."
+ 1217         try {
+ 1218             $word.Quit()
+ 1219         }
+ 1220         catch {
+ 1221             Write-Warning $_.Exception.Message
+ 1222         }
+ 1223         [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($word)
+ 1224     }
+ 1225 }
+ 1226 Write-Host "Finished."
+ 1227 ;;;;
+ 1228 %jnr_powershellEnd;
+ 1229 
+ 1230 /**************************************************************************************************************************/
+ 1231 /* 8   Macros pwershell sandwich and utlfkil                                                                              */
+ 1232 /**************************************************************************************************************************/
+ 1233 
+ 1234 /*--- SAVE JNR_POWERSHELLBEGIN.SAS IN AUTOCALL C:/OTOJNR ---*/
+ 1235 filename ft15f001 "c:/otojnr/jnr_powershellBegin.sas";
+ 1236 parmcards4;
+ 1237 %macro jnr_powershellBegin(
+ 1238     resolve=Y
+ 1239     )/des="No additional quote(backtic) because powershell needs it";
+ 1240 
+ 1241   %local pth;
+ 1242   %let pth=%sysfunc(pathname(workx));
+ 1243 
+ 1244   %utlfkil(&pth/powershell_resolve.ps1);
+ 1245 
+ 1246   data _null_;
+ 1247     length _infile_ $255;
+ 1248     file "&pth/powershell_resolve.ps1";
+ 1249     input;
+ 1250     if upcase("&resolve")=:"Y" then _infile_=resolve(_infile_);
+ 1251     put _infile_;
+ 1252     putlog _infile_;
+ 1253 
+ 1254 %mend jnr_powershellBegin;
+ 1255 ;;;;
+ 1256 run;
+ 1257 
+ 1258 /*--- SAVE JNR_POWERSHELLEND.SAS IN AUROCALL C:/OTOJNR ---*/
+ 1259 filename ft15f001 "c:/otojnr/jnr_powershellEnd.sas";
+ 1260 parmcards4;
+ 1261 %macro jnr_powershellEnd(
+ 1262     return=
+ 1263    )/des="execute powershell script";
+ 1264 run;
+ 1265   %local pth;
+ 1266   %let pth=%sysfunc(pathname(workx);
+ 1267   filename rut pipe 'powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File "d:\wpswrkx\powershell_resolve.ps1" 2>&1';
+ 1268 run;quit;
+ 1269   run;quit;
+ 1270   data _null_;
+ 1271     infile rut;
+ 1272     input;
+ 1273     putlog _infile_;
+ 1274     *ile print;
+ 1275     *put _infile_;
+ 1276   run;
+ 1277 
+ 1278   filename rut clear;
+ 1279 
+ 1280   * use the clipboard to create macro variable;
+ 1281   %if "&return" ^= "" %then %do;
+ 1282     filename clip clipbrd;
+ 1283     data _null_;
+ 1284      infile clip;  /*--- created from the SPSS script ---*/
+ 1285      input;
+ 1286      putlog "*******  " _infile_ "  ********";
+ 1287      call symputx("&return",_infile_,"G");
+ 1288     run;quit;
+ 1289   %end;
+ 1290 
+ 1291 %mend jnr_powershellEnd;
+ 1292 ;;;;
+ 1293 run;
+ 1294 
+ 1295 filename ft15f001 "c:/otojnr/utlfkil.sas";
+ 1296 parmcards4;
+ 1297 %macro utlfkil(file) / des="delete file if it exists";
+ 1298   %if %sysfunc(fileexist(&file)) ge 1 %then %do;
+ 1299     %let rc=%sysfunc(filename(temp,&file));
+ 1300     %let rc=%sysfunc(fdelete(&temp));
+ 1301   %end;
+ 1302 %else %put The file &file does not exist;
+ 1303 %mend utlfkil;
+ 1304 ;;;;
+ 1305 run;
+ 1306 
+ 1307 /*--- END ---*/
+ 1308 
+
+NOTE: 1308 records were read from the infile 'c:/jnr/runsas_selection.sas'.
+NOTE: DATA elapsed:
+  wall  0.03 seconds
+  cpu   0.03 seconds
+NOTE: DATA _null_
+
+autoexec completed    16NOV2026:14:33:54
+
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: Library ADAM assigned path=d:/adam.
+NOTE: DATA WORK.__WANT__
+
+
+NOTE: The data set WORK.__WANT__ has 11 observations and 3 variables.
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: __want__ created with 11 file names from d:/adam.
+NOTE: DATA _null_
+
+
+NOTE: There were 1 observations read from the data set WORK.__WANT__.
+      WHERE UPCASE('adsl')=:UPCASE(basefile);
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.02 seconds
+NOTE: PROC CONTENTS data=d:/adam\adsl.parquet
+
+NOTE: PROC CONTENTS completed: 254 observations, 48 variables
+NOTE: Library ADAM assigned path=d:/adam.
+NOTE: Library WORKX assigned path=d:/wpswrkx.
+NOTE: Library LIBRARY assigned path=d:/wpswrkx.
+NOTE: PROC DATASETS library=WORKX
+
+NOTE: 
+                       Directory
+
+       Libref             WORKX
+       Engine             V9
+       Physical Name      d:/wpswrkx
+
+       #    Name                             Member Type
+       ----------------------------------------------------
+       1    ADDPVALS                         DATA
+       2    ADSL                             DATA
+       3    ADSL12                           DATA
+       4    CLASS                            DATA
+       5    CNTPCT                           DATA
+       6    DEMUNV                           DATA
+       7    FILLIN                           DATA
+       8    FIXPS                            DATA
+       9    FIXPVAL                          DATA
+       10   FORMATS                          CATALOG
+       11   GLMFRQ                           DATA
+       12   MOCKUP                           DATA
+       13   NRM1ST                           DATA
+       14   NRMUNV                           DATA
+       15   PCATAGORICAL                     DATA
+       16   PFLOATS                          DATA
+       17   PRERPT                           DATA
+       18   SHL                              DATA
+       19   SHLDAT                           DATA
+       20   XPO                              DATA
+       21   XPOFILLIN                        DATA
+
+NOTE: Deleting WORKX.FORMATS (memtype=CATALOG).
+NOTE: KILL option deleted 21 member(s) from library WORKX.
+NOTE: PROC COPY in=adam out=WORK.WORKX
+
+NOTE: Copying ADAM.ADSL to WORKX.ADSL (memtype=DATA).
+NOTE: 1 member(s) copied.
+NOTE: Option VALIDVARNAME changed to UPCASE.
+NOTE: DATA WORKX.ADSL12
+
+NOTE: A missing value is less than every number, so comparisons were true for missing
+      values. To leave them out, write "not missing(x) and" before the comparison.
+      Each place is given by: (Number of times) at (Line):(Column).
+      1 at 162:24   1 at 163:26
+
+NOTE: There were 254 observations read from the data set WORKX.ADSL.
+NOTE: The data set WORKX.ADSL12 has 254 observations and 14 variables.
+NOTE: DATA elapsed:
+  wall  0.01 seconds
+  cpu   0.02 seconds
+NOTE: PROC PRINT data=WORKX.ADSL12
+
+NOTE: PROC PRINT completed: 10 observations printed, 14 variables
+NOTE: PROC FORMAT library=LIBRARY
+
+NOTE: FORMAT age defined (4 ranges).
+NOTE: FORMAT AGEGR1N defined (3 ranges).
+NOTE: FORMAT SEXN defined (3 ranges).
+NOTE: FORMAT RACEN defined (4 ranges).
+NOTE: FORMAT MMSETOT defined (4 ranges).
+NOTE: FORMAT DURDIS defined (4 ranges).
+NOTE: FORMAT DURDISCD defined (2 ranges).
+NOTE: FORMAT EDUCLVL defined (4 ranges).
+NOTE: FORMAT WEIGHTBL defined (4 ranges).
+NOTE: FORMAT HEIGHTBL defined (4 ranges).
+NOTE: FORMAT BMIBL defined (4 ranges).
+NOTE: FORMAT BMICD defined (3 ranges).
+NOTE: PROC FORMAT library=LIBRARY
+
+NOTE: CNTLOUT: Exported 43 format entries to workx.mockup
+NOTE: PROC PRINT data=WORKX.MOCKUP
+
+NOTE: PROC PRINT completed: 43 observations printed, 2 variables
+NOTE: DATA WORKX.NRM1ST
+
+
+NOTE: There were 254 observations read from the data set WORKX.ADSL12.
+NOTE: The data set WORKX.NRM1ST has 6096 observations and 3 variables.
+NOTE: DATA elapsed:
+  wall  0.04 seconds
+  cpu   0.05 seconds
+NOTE: PROC PRINT data=WORKX.NRM1ST
+
+NOTE: PROC PRINT completed: 5 observations printed, 3 variables
+NOTE: DATA WORKX.SHL
+
+
+NOTE: There were 15 observations read from the data set WORKX.MOCKUP.
+      WHERE SCAN(label, 8, '@')='NPCT';
+NOTE: The data set WORKX.SHL has 60 observations and 3 variables.
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC PRINT data=WORKX.SHL
+
+NOTE: PROC PRINT completed: 60 observations printed, 3 variables
+NOTE: PROC SQL 
+
+NOTE: Table WORKX.SHLDAT created.
+NOTE: PROC SQL statement used.
+NOTE: PROC FREQ
+NOTE: PROC FREQ statement used.
+NOTE: PROC PRINT data=WORKX.SHLDAT
+
+NOTE: PROC PRINT completed: 10 observations printed, 4 variables
+NOTE: PROC SQL 
+
+NOTE: Table WORKX.CNTPCT created.
+NOTE: PROC SQL statement used.
+NOTE: PROC PRINT data=WORKX.CNTPCT
+
+NOTE: PROC PRINT completed: 60 observations printed, 5 variables
+NOTE: PROC SQL 
+
+NOTE: Macro variable FLOATS = "AGE" "BMIBL" "DURDIS" "EDUCLVL" "HEIGHTBL" "MMSETOT" "WEIGHTBL"
+NOTE: Macro variable STATISTICS = Mean StdDev Median Min Max N
+NOTE: PROC SQL statement used.
+1 FLOATS="AGE" "BMIBL" "DURDIS" "EDUCLVL" "HEIGHTBL" "MMSETOT" "WEIGHTBL"
+2 STATISTICS=Mean StdDev Median Min Max N
+NOTE: PROC MEANS
+NOTE: Output dataset WORKX.DEMUNV has 28 observations and 10 variables.
+NOTE: PROC MEANS statement used.
+NOTE: PROC PRINT data=WORKX.DEMUNV
+
+NOTE: PROC PRINT completed: 28 observations printed, 10 variables
+NOTE: DATA WORKX.NRMUNV
+
+
+NOTE: The data set WORKX.NRMUNV has 172 observations and 4 variables.
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.02 seconds
+NOTE: PROC PRINT data=WORKX.NRMUNV
+
+NOTE: PROC PRINT completed: 172 observations printed, 4 variables
+NOTE: PROC SORT data=WORKX.NRMUNV
+
+NOTE: There were 172 observations read from the data set WORKX.NRMUNV.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: The data set WORK.SRT has 172 observations and 4 variables.
+NOTE: PROC SORT statement used.
+NOTE: PROC TRANSPOSE data=WORK.SRT
+
+NOTE: The data set WORKX.XPO has 43 observations and 5 variables.
+NOTE: PROC PRINT data=WORKX.XPO
+
+NOTE: PROC PRINT completed: 43 observations printed, 5 variables
+NOTE: PROC SQL 
+
+NOTE: Macro variable FLOATS = AGE BMIBL DURDIS EDUCLVL HEIGHTBL MMSETOT WEIGHTBL
+NOTE: PROC SQL statement used.
+FLOATS FLOATS=AGE BMIBL DURDIS EDUCLVL HEIGHTBL MMSETOT WEIGHTBL
+ITER RES=AGE I=1
+NOTE: ODS OUTPUT: OVERALLANOVA -> WORK.AGE
+NOTE: PROC GLM data=WORKX.ADSL12
+
+NOTE: ODS OUTPUT: OverallANOVA written to 'WORK.AGE'.
+NOTE: ODS plot written: glm_boxplot.spec.json
+NOTE: PROC GLM ODS Graphics generated.
+NOTE: PROC GLM statement used.
+ITER RES=BMIBL I=2
+NOTE: ODS OUTPUT: OVERALLANOVA -> WORK.BMIBL
+NOTE: PROC GLM data=WORKX.ADSL12
+
+NOTE: ODS OUTPUT: OverallANOVA written to 'WORK.BMIBL'.
+NOTE: ODS plot written: glm_boxplot1.spec.json
+NOTE: PROC GLM ODS Graphics generated.
+NOTE: PROC GLM statement used.
+ITER RES=DURDIS I=3
+NOTE: ODS OUTPUT: OVERALLANOVA -> WORK.DURDIS
+NOTE: PROC GLM data=WORKX.ADSL12
+
+NOTE: ODS OUTPUT: OverallANOVA written to 'WORK.DURDIS'.
+NOTE: ODS plot written: glm_boxplot2.spec.json
+NOTE: PROC GLM ODS Graphics generated.
+NOTE: PROC GLM statement used.
+ITER RES=EDUCLVL I=4
+NOTE: ODS OUTPUT: OVERALLANOVA -> WORK.EDUCLVL
+NOTE: PROC GLM data=WORKX.ADSL12
+
+NOTE: ODS OUTPUT: OverallANOVA written to 'WORK.EDUCLVL'.
+NOTE: ODS plot written: glm_boxplot3.spec.json
+NOTE: PROC GLM ODS Graphics generated.
+NOTE: PROC GLM statement used.
+ITER RES=HEIGHTBL I=5
+NOTE: ODS OUTPUT: OVERALLANOVA -> WORK.HEIGHTBL
+NOTE: PROC GLM data=WORKX.ADSL12
+
+NOTE: ODS OUTPUT: OverallANOVA written to 'WORK.HEIGHTBL'.
+NOTE: ODS plot written: glm_boxplot4.spec.json
+NOTE: PROC GLM ODS Graphics generated.
+NOTE: PROC GLM statement used.
+ITER RES=MMSETOT I=6
+NOTE: ODS OUTPUT: OVERALLANOVA -> WORK.MMSETOT
+NOTE: PROC GLM data=WORKX.ADSL12
+
+NOTE: ODS OUTPUT: OverallANOVA written to 'WORK.MMSETOT'.
+NOTE: ODS plot written: glm_boxplot5.spec.json
+NOTE: PROC GLM ODS Graphics generated.
+NOTE: PROC GLM statement used.
+ITER RES=WEIGHTBL I=7
+NOTE: ODS OUTPUT: OVERALLANOVA -> WORK.WEIGHTBL
+NOTE: PROC GLM data=WORKX.ADSL12
+
+NOTE: ODS OUTPUT: OverallANOVA written to 'WORK.WEIGHTBL'.
+NOTE: ODS plot written: glm_boxplot6.spec.json
+NOTE: PROC GLM ODS Graphics generated.
+NOTE: PROC GLM statement used.
+FLOATS=AGE BMIBL DURDIS EDUCLVL HEIGHTBL MMSETOT WEIGHTBL
+NOTE: PROC PRINT data=WORK.AGE
+
+NOTE: PROC PRINT completed: 3 observations printed, 7 variables
+NOTE: DATA WORKX.PFLOATS
+
+WARNING: Multiple lengths were specified for the variable Dependent by input data set(s). This can cause truncation of data.
+NOTE: Variable src is uninitialized.
+fro=AGE src=WORK.AGE
+NOTE: Numeric values have been converted to character values at the places given by: (Line):(Column).
+fro=BMIBL src=WORK.BMIBL
+fro=DURDIS src=WORK.DURDIS
+fro=EDUCLVL src=WORK.EDUCLVL
+fro=HEIGHTBL src=WORK.HEIGHTBL
+fro=MMSETOT src=WORK.MMSETOT
+fro=WEIGHTBL src=WORK.WEIGHTBL
+
+NOTE: There were 3 observations read from the data set WORK.AGE.
+NOTE: There were 3 observations read from the data set WORK.BMIBL.
+NOTE: There were 3 observations read from the data set WORK.DURDIS.
+NOTE: There were 3 observations read from the data set WORK.EDUCLVL.
+NOTE: There were 3 observations read from the data set WORK.HEIGHTBL.
+NOTE: There were 3 observations read from the data set WORK.MMSETOT.
+NOTE: There were 3 observations read from the data set WORK.WEIGHTBL.
+NOTE: The data set WORKX.PFLOATS has 7 observations and 2 variables.
+NOTE: DATA elapsed:
+  wall  0.03 seconds
+  cpu   0.03 seconds
+NOTE: PROC PRINT data=WORKX.PFLOATS
+
+NOTE: PROC PRINT completed: 7 observations printed, 2 variables
+NOTE: PROC SQL 
+
+NOTE: Macro variable CATAGORICAL = AGEGR1N BMICD DURDISCD RACEN SEXN
+NOTE: PROC SQL statement used.
+CATAGORICAL CATAGORICAL=AGEGR1N BMICD DURDISCD RACEN SEXN
+ITER RES=AGEGR1N I=1
+NOTE: PROC FREQ
+NOTE: PROC FREQ statement used.
+ITER RES=BMICD I=2
+NOTE: PROC FREQ
+NOTE: PROC FREQ statement used.
+ITER RES=DURDISCD I=3
+NOTE: PROC FREQ
+NOTE: PROC FREQ statement used.
+ITER RES=RACEN I=4
+NOTE: PROC FREQ
+NOTE: PROC FREQ statement used.
+ITER RES=SEXN I=5
+NOTE: PROC FREQ
+NOTE: PROC FREQ statement used.
+ITER RES= I=6
+NOTE: PROC FREQ
+NOTE: PROC FREQ statement used.
+NOTE: DATA WORKX.PCATAGORICAL
+
+NOTE: Variable src is uninitialized.
+fro=AGEGR1N src=WORK.AGEGR1N
+fro=BMICD src=WORK.BMICD
+fro=DURDISCD src=WORK.DURDISCD
+fro=RACEN src=WORK.RACEN
+fro=SEXN src=WORK.SEXN
+
+NOTE: There were 1 observations read from the data set WORK.AGEGR1N.
+NOTE: There were 1 observations read from the data set WORK.BMICD.
+NOTE: There were 1 observations read from the data set WORK.DURDISCD.
+NOTE: There were 1 observations read from the data set WORK.RACEN.
+NOTE: There were 1 observations read from the data set WORK.SEXN.
+NOTE: The data set WORKX.PCATAGORICAL has 5 observations and 2 variables.
+NOTE: DATA elapsed:
+  wall  0.02 seconds
+  cpu   0.02 seconds
+NOTE: PROC PRINT data=WORKX.PCATAGORICAL
+
+NOTE: PROC PRINT completed: 5 observations printed, 2 variables
+NOTE: DATA WORKX.GLMFRQ
+
+
+NOTE: There were 5 observations read from the data set WORKX.PCATAGORICAL.
+NOTE: There were 7 observations read from the data set WORKX.PFLOATS.
+NOTE: The data set WORKX.GLMFRQ has 12 observations and 2 variables.
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC PRINT data=WORKX.GLMFRQ
+
+NOTE: PROC PRINT completed: 12 observations printed, 2 variables
+NOTE: PROC SQL 
+
+NOTE: Table WORKX.ADDPVALS created.
+NOTE: PROC SQL statement used.
+NOTE: PROC PRINT data=WORKX.ADDPVALS
+
+NOTE: PROC PRINT completed: 43 observations printed, 6 variables
+NOTE: PROC SQL 
+
+NOTE: Table WORKX.PRERPT created.
+NOTE: PROC SQL statement used.
+NOTE: PROC PRINT data=WORKX.PRERPT
+
+NOTE: PROC PRINT completed: 43 observations printed, 9 variables
+NOTE: PROC SQL 
+
+NOTE: Table WORKX.FILLIN created.
+NOTE: PROC SQL statement used.
+NOTE: PROC TRANSPOSE data=WORKX.FILLIN
+
+NOTE: The data set WORKX.XPOFILLIN has 2 observations and 6 variables.
+NOTE: PROC PRINT data=WORKX.XPOFILLIN
+
+NOTE: PROC PRINT completed: 2 observations printed, 6 variables
+NOTE: DATA WORKX.PRERPT
+
+NOTE: The data set WORKX.PRERPT has been updated. There were 2 observations rewritten, 0 observations added and 0 observations deleted.
+NOTE: PROC PRINT data=WORKX.PRERPT
+
+NOTE: PROC PRINT completed: 43 observations printed, 9 variables
+NOTE: DATA WORKX.FIXPVAL
+
+
+NOTE: There were 43 observations read from the data set WORKX.PRERPT.
+NOTE: The data set WORKX.FIXPVAL has 46 observations and 9 variables.
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.02 seconds
+NOTE: PROC PRINT data=WORKX.FIXPVAL
+
+NOTE: PROC PRINT completed: 46 observations printed, 9 variables
+NOTE: PROC SQL 
+
+NOTE: Macro variable MAXPGE = 3
+NOTE: PROC SQL statement used.
+MAX NUMBER OF PAGES MAXPGE=3
+NOTE: PROC SQL 
+
+NOTE: Macro variable PLACEBO = Placebo#(N=86)
+NOTE: Macro variable XL = Xanomeline#Low Dose#(N=84)
+NOTE: Macro variable XH = Xanomeline#High Dose#(N=84)
+NOTE: Macro variable ALL = Total#(N=254)
+NOTE: Macro variable DT = 14:33 Monday, November 16, 2026
+NOTE: PROC SQL statement used.
+XL=Xanomeline#Low Dose#(N=84)
+XH=Xanomeline#High Dose#(N=84)
+PLACEBO=Placebo#(N=86)
+DT=14:33 Monday, November 16, 2026
+NOTE: Option PS changed to 42.
+NOTE: PROC SQL 
+
+NOTE: Macro variable MAXPGE = 3
+NOTE: PROC SQL statement used.
+MAX NUMBER OF PAGES MAXPGE=3
+NOTE: PROC REPORT data=WORKX.FIXPVAL
+
+NOTE: PROC REPORT output 19 observations with 8 variables.
+
+NOTE: There were 19 observations read from the data set WORKX.FIXPVAL.
+      WHERE pge=1;
+NOTE: The data set (console) has 19 observations and 8 variables.
+NOTE: PROC REPORT elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC REPORT data=WORKX.FIXPVAL
+
+NOTE: PROC REPORT output 15 observations with 8 variables.
+
+NOTE: There were 15 observations read from the data set WORKX.FIXPVAL.
+      WHERE pge=2;
+NOTE: The data set (console) has 15 observations and 8 variables.
+NOTE: PROC REPORT elapsed:
+  wall  0.00 seconds
+  cpu   0.02 seconds
+NOTE: PROC REPORT data=WORKX.FIXPVAL
+
+NOTE: PROC REPORT output 12 observations with 8 variables.
+
+NOTE: There were 12 observations read from the data set WORKX.FIXPVAL.
+      WHERE pge=3;
+NOTE: The data set (console) has 12 observations and 8 variables.
+NOTE: PROC REPORT elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: Option PAGESIZE changed to 42.
+NOTE: DATA WORKX.FIXPS
+
+NOTE: Writing to fileref d:/txt/adslfix.txt (d:/txt/adslfix.txt)
+NOTE: Reading from fileref d:/txt/adsl.txt (d:/txt/adsl.txt)
+
+NOTE: 100 records were read from the infile 'd:/txt/adsl.txt'.
+NOTE: The data set WORKX.FIXPS has 100 observations and 3 variables.
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA _null_
+
+NOTE: Writing to fileref d:/wpswrkx/powershell_resolve.ps1 (d:/wpswrkx/powershell_resolve.ps1)
+NOTE: Processing inline DATALINES (103 lines)
+$ErrorActionPreference = "Stop"
+
+$inputFile  = "D:\txt\adslfix.txt"
+$outputFile = "D:\doc\pages.docx"
+
+$word  = $null
+$doc   = $null
+$range = $null
+
+try {
+    Write-Host "1. Checking input file..."
+
+    if (-not (Test-Path -LiteralPath $inputFile -PathType Leaf)) {
+        throw "Input file not found: $inputFile"
+    }
+
+    $outputDir = Split-Path -Parent $outputFile
+
+    if (-not (Test-Path -LiteralPath $outputDir)) {
+        New-Item -ItemType Directory -Path $outputDir -Force |
+            Out-Null
+    }
+
+    Write-Host "2. Reading text..."
+    $text = Get-Content -LiteralPath $inputFile -Raw -Encoding UTF8
+
+    if ([string]::IsNullOrEmpty($text)) {
+        throw "Input file is empty: $inputFile"
+    }
+
+    Write-Host "   Read $($text.Length) characters."
+
+    Write-Host "3. Starting Microsoft Word..."
+    $word = New-Object -ComObject Word.Application
+
+    $word.Visible = $true
+    $word.DisplayAlerts = -1
+
+    Write-Host "4. Creating document..."
+    $doc = $word.Documents.Add()
+
+    Write-Host "5. Inserting text..."
+    $range = $doc.Content
+    $range.Text = $text
+
+    Write-Host "6. Formatting..."
+    $range.Font.Name = "Courier New"
+    $range.Font.Size = 9
+
+    $range.ParagraphFormat.SpaceBefore = 0
+    $range.ParagraphFormat.SpaceAfter  = 0
+
+    #$doc.PageSetup.Orientation  = 1
+    #$doc.PageSetup.TopMargin    = 36
+    #$doc.PageSetup.BottomMargin = 36
+    #$doc.PageSetup.LeftMargin   = 36
+    #$doc.PageSetup.RightMargin  = 36
+
+    Write-Host "7. Saving Word document..."
+
+    # 12 = wdFormatXMLDocument (.docx)
+    $doc.SaveAs2($outputFile, 12)
+
+    if (-not (Test-Path -LiteralPath $outputFile -PathType Leaf)) {
+        throw "Word returned without creating the DOCX file."
+    }
+
+    Write-Host "Word document exists: $outputFile"
+}
+catch {
+    Write-Host ("ERROR: " + $_.Exception.Message) -ForegroundColor Red
+    throw
+}
+finally {
+    if ($null -ne $range) {
+        [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($range)
+    }
+
+    if ($null -ne $doc) {
+        Write-Host "8. Closing document..."
+        try {
+            $doc.Close(0)
+        }
+        catch {
+            Write-Warning $_.Exception.Message
+        }
+
+        [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($doc)
+    }
+
+    if ($null -ne $word) {
+        Write-Host "9. Quitting Word..."
+        try {
+            $word.Quit()
+        }
+        catch {
+            Write-Warning $_.Exception.Message
+        }
+
+        [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($word)
+    }
+}
+Write-Host "Finished."
+
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: Fileref RUT assigned to device PIPE (payload: powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File "d:\wpswrkx\powershell_resolve.ps1" 2>&1).
+NOTE: DATA _null_
+
+NOTE: Reading from fileref rut (D:\wpswrk\bfeafbfc-97a9-481f-9b8b-705e8f3859af\jenner_pipe_RUT_049bd29ffc9d4e0f91f8358854eef8d1.tmp)
+1. Checking input file...
+2. Reading text...
+   Read 7511 characters.
+3. Starting Microsoft Word...
+4. Creating document...
+5. Inserting text...
+6. Formatting...
+7. Saving Word document...
+Word document exists: D:\doc\pages.docx
+8. Closing document...
+9. Quitting Word...
+Finished.
+
+NOTE: 12 records were read from the infile RUT.
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: Fileref RUT cleared.
+NOTE: DATA _null_
+
+NOTE: Writing to fileref d:/wpswrkx/powershell_resolve.ps1 (d:/wpswrkx/powershell_resolve.ps1)
+NOTE: Processing inline DATALINES (100 lines)
+$ErrorActionPreference = "Stop"
+
+$inputFile  = "D:\txt\adslfix.txt"
+$outputFile = "D:\pdf\pages.pdf"
+
+$word  = $null
+$doc   = $null
+$range = $null
+
+try {
+    Write-Host "1. Checking input file..."
+
+    if (-not (Test-Path -LiteralPath $inputFile -PathType Leaf)) {
+        throw "Input file not found: $inputFile"
+    }
+
+    $outputDir = Split-Path -Parent $outputFile
+
+    if (-not (Test-Path -LiteralPath $outputDir)) {
+        New-Item -ItemType Directory -Path $outputDir -Force |
+            Out-Null
+    }
+
+    Write-Host "2. Reading text..."
+    $text = Get-Content -LiteralPath $inputFile -Raw -Encoding UTF8
+
+    if ([string]::IsNullOrEmpty($text)) {
+        throw "Input file is empty: $inputFile"
+    }
+
+    Write-Host "   Read $($text.Length) characters."
+
+    Write-Host "3. Starting Microsoft Word..."
+    $word = New-Object -ComObject Word.Application
+
+    # Keep Word visible and alerts enabled during diagnosis.
+    $word.Visible = $true
+    $word.DisplayAlerts = -1
+
+    Write-Host "4. Creating document..."
+    $doc = $word.Documents.Add()
+
+    Write-Host "5. Inserting text..."
+    $range = $doc.Content
+    $range.Text = $text
+
+    Write-Host "6. Formatting..."
+    $range.Font.Name = "Courier New"
+    $range.Font.Size = 9
+
+    $range.ParagraphFormat.SpaceBefore = 0
+    $range.ParagraphFormat.SpaceAfter  = 0
+
+    #$doc.PageSetup.Orientation  = 1
+    #$doc.PageSetup.TopMargin    = 36
+    #$doc.PageSetup.BottomMargin = 36
+    #$doc.PageSetup.LeftMargin   = 36
+    #$doc.PageSetup.RightMargin  = 36
+
+    Write-Host "7. Exporting PDF..."
+    $doc.ExportAsFixedFormat($outputFile, 17)
+
+    if (-not (Test-Path -LiteralPath $outputFile -PathType Leaf)) {
+        throw "Word returned without creating the PDF."
+    }
+
+    Write-Host "PDF exists: $outputFile"
+}
+catch {
+    Write-Host ("ERROR: " + $_.Exception.Message) -ForegroundColor Red
+    throw
+}
+finally {
+    if ($null -ne $range) {
+        [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($range)
+    }
+
+    if ($null -ne $doc) {
+        Write-Host "8. Closing document..."
+        try {
+            $doc.Close(0)
+        }
+        catch {
+            Write-Warning $_.Exception.Message
+        }
+        [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($doc)
+    }
+
+    if ($null -ne $word) {
+        Write-Host "9. Quitting Word..."
+        try {
+            $word.Quit()
+        }
+        catch {
+            Write-Warning $_.Exception.Message
+        }
+        [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($word)
+    }
+}
+Write-Host "Finished."
+
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: Fileref RUT assigned to device PIPE (payload: powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File "d:\wpswrkx\powershell_resolve.ps1" 2>&1).
+NOTE: DATA _null_
+
+NOTE: Reading from fileref rut (D:\wpswrk\bfeafbfc-97a9-481f-9b8b-705e8f3859af\jenner_pipe_RUT_e96af5e2be784f39932d7bb84cd316ac.tmp)
+1. Checking input file...
+2. Reading text...
+   Read 7511 characters.
+3. Starting Microsoft Word...
+4. Creating document...
+5. Inserting text...
+6. Formatting...
+7. Exporting PDF...
+PDF exists: D:\pdf\pages.pdf
+8. Closing document...
+9. Quitting Word...
+Finished.
+
+NOTE: 12 records were read from the infile RUT.
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: Fileref RUT cleared.
+NOTE: Fileref FT15F001 assigned to c:/otojnr/jnr_powershellBegin.sas.
+NOTE: PARMCARDS4 wrote 18 record(s) to fileref FT15F001.
+NOTE: Fileref FT15F001 assigned to c:/otojnr/jnr_powershellEnd.sas.
+NOTE: PARMCARDS4 wrote 31 record(s) to fileref FT15F001.
+NOTE: Fileref FT15F001 assigned to c:/otojnr/utlfkil.sas.
+NOTE: PARMCARDS4 wrote 7 record(s) to fileref FT15F001.
