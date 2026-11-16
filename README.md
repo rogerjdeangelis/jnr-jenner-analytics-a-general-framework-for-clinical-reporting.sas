@@ -14,7 +14,7 @@ Jenner Analytics general framework for clinical reporting
     https://tinyurl.com/bdzhvkkp
 
     Jenner Table in PDF Format (Note PDF tables should not be editable? - download for higher resolution?)
-      [Jenner Table in PDF Format] https://tinyurl.com/yeyvubuf
+      [Jenner Table in PDF Format]https://tinyurl.com/yeyvubuf
     Jenner Table in Word Format (Note PDF tables should not be editable?)
       https://tinyurl.com/5fam2m2m
     Jenner Table Printer Format
