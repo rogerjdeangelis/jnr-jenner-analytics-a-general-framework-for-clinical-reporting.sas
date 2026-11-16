@@ -70,12 +70,12 @@ Jenner Analytics general framework for clinical reporting
          2 = "SEXN     @Page @01 @Order @320 @Sex      @Female     @NPCT         @NPCT";
       ...
 
-    Attachements
+    Attachments
 
     1. pages.pdf    Intent to Treat Table PDF
     2. pages.docx   Intent to Treat Table MS Word
     3. adsl.txt     Intent to Treat Original Table (Need to do some post processing mimor page issue Jenner fixing)
-    4. adslfix.txt  Post processing adsl.txt to enable a minor formatting issue
+    4. adslfix.txt  Post-processing adsl.txt to enable a minor formatting issue
     5. ads1.log     Log
     6  ads1.lst     List
 
