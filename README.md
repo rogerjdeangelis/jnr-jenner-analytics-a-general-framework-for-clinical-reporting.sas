@@ -95,6 +95,7 @@ Jenner Analytics general framework for clinical reporting
           If you see blue and red underlines turn proofing off
       7   Table 14-2.01 in PDF Format
       8   Macros powershell sandwich and utlfkil
+      9   Macro to convert text file to pdf     
     ---*/
 
     /**************************************************************************************************************************/
@@ -1372,6 +1373,54 @@ Jenner Analytics general framework for clinical reporting
     %mend utlfkil;
     ;;;;
     run;
+
+    /**************************************************************************************************************************/
+    /* 9  Macro to convert text file to pdf                                                                                   */
+    /**************************************************************************************************************************/
+    
+    %macro jnr_toPDF(
+       input ="d:/txt/adslfix.txt"
+      ,output="d:/pdf/adslfix.pdf"
+    );
+
+    options set=PROC_PYPATH "D:\py314\python.exe";
+
+    proc python;
+    submit;
+    from pathlib import Path
+    from fpdf import FPDF
+
+    input_file  = Path(&input)
+    output_file = Path(&output)
+
+    text = input_file.read_text(encoding="utf-8")
+
+    pdf = FPDF(orientation="L", unit="mm", format="Letter")
+    pdf.set_margins(left=12, top=12, right=12)
+    pdf.set_auto_page_break(auto=True, margin=12)
+    pdf.add_page()
+    pdf.set_font("Courier", size=9)
+
+    for page_number, page_text in enumerate(text.expandtabs(8).split("\f")):
+        if page_number:
+            pdf.add_page()
+
+        pdf.set_x(pdf.l_margin)
+        pdf.multi_cell(
+            w=0,
+            h=4,
+            txt=page_text,
+            align="L"
+        )
+
+    pdf.output();
+    endsubmit;
+    run;
+
+    %mend jnr_toPDF;
+
+    %jnr_toPDF;
+
 
     /*--- END ---*/
     
